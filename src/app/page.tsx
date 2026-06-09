@@ -1,46 +1,167 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import { motion } from "motion/react"
+import { ArrowRight, BookOpen } from "lucide-react"
 
 export default function Home() {
   return (
     <>
-      <div className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center px-4">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="relative flex min-h-screen flex-col justify-center overflow-hidden px-4">
+        <div className="from-primary/20 via-background to-background pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))]" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, hsl(217 91% 60%) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="from-primary/15 pointer-events-none absolute top-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full blur-[120px]" />
+        <div className="from-primary/10 pointer-events-none absolute bottom-[-10%] left-[-5%] h-[400px] w-[400px] rounded-full blur-[100px]" />
+
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <div>
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/50 px-3 py-1 text-[11px] font-mono tracking-wider text-muted-foreground/80 backdrop-blur-sm"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              v0.1.0 · MIT
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+            >
               Build beautiful UIs{" "}
               <span className="text-primary">at the speed of copy-paste</span>
-            </h1>
-            <p className="mt-5 max-w-lg text-base text-muted-foreground sm:text-lg leading-relaxed">
-              Production-ready components for your next project.
-            </p>
-            <div className="mt-8 flex gap-3">
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-5 max-w-lg text-base text-muted-foreground/80 sm:text-lg leading-relaxed"
+            >
+              Production-ready components you can copy, modify, and ship. Zero
+              dependencies. Dark mode included.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-8 flex gap-3"
+            >
               <Link href="/components">
-                <Button size="lg">Browse Components</Button>
+                <Button size="lg">
+                  Browse Components
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Button>
               </Link>
               <Link href="/docs">
-                <Button variant="outline" size="lg">Documentation</Button>
+                <Button variant="outline" size="lg">
+                  <BookOpen className="mr-1.5 h-4 w-4" />
+                  Documentation
+                </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
-          <div className="hidden lg:block">
-            <div className="rounded-xl border bg-codebg">
-              <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-                <span className="ml-2 text-[10px] text-muted-foreground font-mono">install.sh</span>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block"
+          >
+            <div className="overflow-hidden rounded-xl border border-border/60 bg-codebg shadow-2xl shadow-primary/10">
+              <div className="flex items-center border-b border-border/60">
+                <div className="flex items-center gap-1.5 border-r border-border/60 px-4 py-3">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-500/50" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/50" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-500/50" />
+                </div>
+                <div className="flex">
+                  <span className="relative border-r border-border/60 px-4 py-3 text-[11px] font-mono text-foreground/80">
+                    button.tsx
+                    <span className="absolute bottom-0 left-0 h-0.5 w-full bg-primary" />
+                  </span>
+                  <span className="px-4 py-3 text-[11px] font-mono text-muted-foreground/60">
+                    page.tsx
+                  </span>
+                  <span className="px-4 py-3 text-[11px] font-mono text-muted-foreground/60">
+                    styles.css
+                  </span>
+                </div>
               </div>
-              <pre className="overflow-x-auto p-5 text-sm font-mono leading-relaxed text-muted-foreground">
-                <span className="text-primary">$</span> npx impic-ui add button<span className="animate-pulse text-primary">▊</span>
-                {"\n"}
-                <span className="text-green-400/80">✓</span> Installed button to <span className="text-muted-foreground/60">components/ui/button.tsx</span>
-              </pre>
+              <div className="grid min-h-[240px] grid-cols-[1fr_1fr]">
+                <div className="border-r border-border/60 p-5">
+                  <pre className="text-[11px] font-mono leading-[1.8] text-muted-foreground/80">
+                    <span className="text-blue-400/90">import</span>{" "}
+                    <span className="text-foreground/70">{'{'} Button {'}'}</span>{" "}
+                    <span className="text-blue-400/90">from</span>{" "}
+                    <span className="text-green-400/80">"impic-ui"</span>
+                    {"\n"}
+                    <span className="text-blue-400/90">import</span>{" "}
+                    <span className="text-foreground/70">{'{'}</span>{" "}
+                    <span className="text-yellow-400/80">Card</span>
+                    <span className="text-foreground/70">{', '}</span>{" "}
+                    <span className="text-yellow-400/80">Badge</span>{" "}
+                    <span className="text-foreground/70">{'}'}</span>{" "}
+                    <span className="text-blue-400/90">from</span>{" "}
+                    <span className="text-green-400/80">"impic-ui"</span>
+                    {"\n\n"}
+                    <span className="text-blue-400/90">export default</span>{" "}
+                    <span className="text-blue-400/90">function</span>{" "}
+                    <span className="text-yellow-400/80">Page</span>(){" "}
+                    <span className="text-foreground/70">{'{'}</span>
+                    {"\n"}
+                    <span className="text-blue-400/90">  return</span>{" "}
+                    <span className="text-foreground/70">(</span>
+                    {"\n"}
+                    <span className="text-muted-foreground/40">    {'<'}div{'>'}</span>
+                    {"\n"}
+                    <span className="text-primary/90">      {'<'}Button{' >'}</span>
+                    <span className="text-muted-foreground/70">Get Started</span>
+                    <span className="text-primary/90">{'</'}Button{' >'}</span>
+                    {"\n"}
+                    <span className="text-muted-foreground/40">    {'<'}div{'>'}</span>
+                    {"\n"}
+                    <span className="text-foreground/70">  )</span>
+                    {"\n"}
+                    <span className="text-foreground/70">{'}'}</span>
+                  </pre>
+                </div>
+                <div className="flex items-center justify-center bg-background/30 p-5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Button size="sm">Button</Button>
+                    <Button size="sm" variant="outline">
+                      Outline
+                    </Button>
+                    <Button size="sm" variant="secondary">
+                      Ghost
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t"
+        />
       </div>
 
       <div className="border-t px-4 py-24">
@@ -62,7 +183,7 @@ export default function Home() {
               },
               {
                 name: "Input",
-                preview: <div className="flex max-w-xs gap-2"><Input placeholder="Enter text..." /><Button size="sm" variant="default">Submit</Button></div>,
+                preview: <div className="flex max-w-xs gap-2"><Input placeholder="Enter text..." /><Button size="sm">Submit</Button></div>,
                 types: "With label, disabled, placeholder states",
               },
               {
