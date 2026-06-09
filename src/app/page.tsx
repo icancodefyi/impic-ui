@@ -1,214 +1,192 @@
-import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-
-const highlights = [
-  {
-    title: "Quiet hierarchy",
-    description:
-      "Strong type, clear spacing, and surfaces that let the content lead.",
-  },
-  {
-    title: "Purposeful motion",
-    description:
-      "Only the smallest transitions, used to clarify structure rather than decorate it.",
-  },
-  {
-    title: "Clean surfaces",
-    description:
-      "Neutral backgrounds, soft borders, and depth that feels physical instead of synthetic.",
-  },
-  {
-    title: "Library-wide consistency",
-    description:
-      "The homepage, docs, and blocks all speak the same visual language.",
-  },
-]
-
-const logos = ["Vercel", "Linear", "Notion", "Stripe", "Airtable", "Tailscale"]
+import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,hsl(var(--foreground)/0.045),transparent_28%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--muted)/0.08))]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[linear-gradient(to_right,hsl(var(--border)/0.4)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.4)_1px,transparent_1px)] bg-size-[5rem_5rem] mask-[radial-gradient(ellipse_at_center,black,transparent_72%)] opacity-25" />
-
-      <section className="px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-16">
-          <div className="flex flex-col justify-center">
-            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-              New visual system, tuned for clarity and restraint
-            </div>
-
-            <h1 className="max-w-4xl text-balance text-5xl font-semibold leading-[0.92] tracking-tight sm:text-6xl lg:text-8xl">
-              Landing pages and blocks that feel editorial, not generated.
+    <>
+      <div className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center px-4">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              Build beautiful UIs{" "}
+              <span className="text-primary">at the speed of copy-paste</span>
             </h1>
-
-            <p className="mt-6 max-w-2xl text-pretty text-base leading-8 text-muted-foreground sm:text-lg">
-              Impic UI is being reworked into a calmer component library with
-              stronger hierarchy, better spacing, and a visual language that
-              feels like a senior designer shaped the whole system.
+            <p className="mt-5 max-w-lg text-base text-muted-foreground sm:text-lg leading-relaxed">
+              Production-ready components for your next project.
             </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex gap-3">
               <Link href="/components">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Explore components
-                </Button>
+                <Button size="lg">Browse Components</Button>
               </Link>
               <Link href="/docs">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Read docs
-                </Button>
+                <Button variant="outline" size="lg">Documentation</Button>
               </Link>
             </div>
-
-            <div className="mt-8 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
-              {[
-                ["08", "blocks"],
-                ["12+", "ui primitives"],
-                ["100%", "copy-paste"],
-                ["MIT", "licensed"],
-              ].map(([value, label]) => (
-                <div key={label} className="rounded-2xl border border-border/70 bg-card/80 px-4 py-4 shadow-sm">
-                  <div className="text-2xl font-semibold tracking-tight">{value}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">{label}</div>
-                </div>
-              ))}
-            </div>
           </div>
-
-          <div className="relative">
-            <div className="absolute -inset-10 rounded-full bg-foreground/5 blur-3xl" />
-            <div className="relative overflow-hidden rounded-4xl border border-border/70 bg-card/90 shadow-[0_24px_90px_hsl(var(--foreground)/0.08)]">
-              <div className="flex items-center justify-between border-b border-border/70 bg-background/90 px-5 py-4 sm:px-6">
-                <div className="flex items-center gap-3 text-sm font-medium">
-                  <span className="flex h-3 w-3 rounded-full bg-red-500" />
-                  <span className="flex h-3 w-3 rounded-full bg-amber-400" />
-                  <span className="flex h-3 w-3 rounded-full bg-emerald-500" />
-                  <span className="ml-3 text-muted-foreground">Aceternity-inspired preview</span>
-                </div>
-                <div className="hidden text-xs text-muted-foreground sm:block">
-                  homepage / visual system
-                </div>
+          <div className="hidden lg:block">
+            <div className="rounded-xl border bg-codebg">
+              <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
+                <span className="ml-2 text-[10px] text-muted-foreground font-mono">install.sh</span>
               </div>
-
-              <div className="grid gap-px bg-border/70 md:grid-cols-[1fr_0.9fr]">
-                <div className="bg-background p-6 sm:p-8">
-                  <div className="mb-10 flex items-center justify-between">
-                    <Badge variant="outline" className="rounded-full px-3 py-1 font-normal">
-                      live preview
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">clean, measured, calm</span>
-                  </div>
-
-                  <div className="max-w-md">
-                    <div className="h-2.5 w-28 rounded-full bg-foreground/10" />
-                    <div className="mt-4 h-10 w-full rounded-2xl border border-border/70 bg-card" />
-                    <div className="mt-3 h-10 w-11/12 rounded-2xl border border-border/70 bg-card" />
-                    <div className="mt-5 space-y-2.5">
-                      <div className="h-2.5 w-full rounded-full bg-foreground/10" />
-                      <div className="h-2.5 w-[80%] rounded-full bg-foreground/10" />
-                      <div className="h-2.5 w-[64%] rounded-full bg-foreground/10" />
-                    </div>
-                    <div className="mt-7 flex gap-2">
-                      <div className="h-10 w-32 rounded-full bg-foreground" />
-                      <div className="h-10 w-28 rounded-full border border-border/70 bg-background" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-[linear-gradient(180deg,hsl(var(--muted)/0.1),hsl(var(--background)))] p-5 sm:p-6">
-                  <div className="grid gap-3">
-                    {logos.map((logo, index) => (
-                      <div
-                        key={logo}
-                        className="flex items-center justify-between rounded-2xl border border-border/70 bg-card px-4 py-4 transition-transform hover:-translate-y-0.5"
-                      >
-                        <div>
-                          <div className="text-sm font-medium">{logo}</div>
-                          <div className="mt-1 text-xs text-muted-foreground">
-                            trusted layout reference
-                          </div>
-                        </div>
-                        <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                          0{index + 1}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <pre className="overflow-x-auto p-5 text-sm font-mono leading-relaxed text-muted-foreground">
+                <span className="text-primary">$</span> npx impic-ui add button<span className="animate-pulse text-primary">▊</span>
+                {"\n"}
+                <span className="text-green-400/80">✓</span> Installed button to <span className="text-muted-foreground/60">components/ui/button.tsx</span>
+              </pre>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="px-4 py-14 sm:px-6">
-        <div className="mx-auto max-w-7xl border-t border-border/70 pt-14">
-          <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.26em] text-muted-foreground">
-              Design intent
-            </p>
-            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-              Calm, premium, and easier to trust.
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
-              The goal is not to impress with gradients or motion everywhere.
-              It is to create a component library that looks confident,
-              readable, and intentionally designed from top to bottom.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {highlights.map((item) => (
-              <Card key={item.title} className="border-border/70 bg-card/80 shadow-none transition-transform hover:-translate-y-0.5">
-                <CardContent className="p-5">
-                  <div className="h-1.5 w-10 rounded-full bg-foreground/10" />
-                  <h3 className="mt-5 text-sm font-medium">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
+      <div className="border-t px-4 py-24">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-[10px] font-mono tracking-widest text-muted-foreground/40 uppercase">
+            The components
+          </p>
+          <div className="mt-10 space-y-px">
+            {[
+              {
+                name: "Button",
+                preview: <div className="flex flex-wrap gap-2"><Button size="sm">Default</Button><Button size="sm" variant="outline">Outline</Button><Button size="sm" variant="secondary">Secondary</Button></div>,
+                types: "4 variants · 4 sizes",
+              },
+              {
+                name: "Badge",
+                preview: <div className="flex flex-wrap gap-2"><Badge>Default</Badge><Badge variant="outline">Outline</Badge><Badge variant="secondary">Secondary</Badge></div>,
+                types: "3 variants",
+              },
+              {
+                name: "Input",
+                preview: <div className="flex max-w-xs gap-2"><Input placeholder="Enter text..." /><Button size="sm" variant="default">Submit</Button></div>,
+                types: "With label, disabled, placeholder states",
+              },
+              {
+                name: "Card",
+                preview: <div className="flex flex-wrap gap-2"><Badge>Default</Badge><Badge variant="outline">Outline</Badge></div>,
+                types: "Content container with header and footer slots",
+              },
+              {
+                name: "Tabs",
+                preview: <div className="flex items-center gap-4"><div className="flex border-b"><span className="border-b-2 border-primary px-3 py-1.5 text-xs font-medium">Active</span><span className="px-3 py-1.5 text-xs text-muted-foreground">Inactive</span><span className="px-3 py-1.5 text-xs text-muted-foreground">Disabled</span></div></div>,
+                types: "Interactive tab strip",
+              },
+              {
+                name: "Accordion",
+                preview: <div className="flex items-center gap-2 text-xs text-muted-foreground"><span className="rounded border px-2 py-1">▸ Section 1</span><span className="rounded border px-2 py-1">▸ Section 2</span></div>,
+                types: "Collapsible content panels",
+              },
+            ].map((item, i) => (
+              <div
+                key={item.name}
+                className="grid items-center gap-4 bg-background px-0 py-4 sm:grid-cols-[10rem_1fr_7rem] sm:gap-6"
+              >
+                <p className="text-[13px] font-medium leading-none">{item.name}</p>
+                <div className="flex min-h-9 items-center">{item.preview}</div>
+                <p className="hidden text-[10px] text-muted-foreground font-mono leading-none sm:block">
+                  {item.types}
+                </p>
+              </div>
             ))}
           </div>
+          <div className="mt-8 border-t pt-6">
+            <Link
+              href="/components"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors font-mono tracking-wider uppercase"
+            >
+              View all 8 components &rarr;
+            </Link>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className="px-4 pb-20 sm:px-6">
-        <div className="mx-auto max-w-7xl rounded-[1.75rem] border border-border/70 bg-background px-6 py-10 shadow-[0_12px_40px_hsl(var(--foreground)/0.05)] sm:px-10">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div className="max-w-2xl">
-              <p className="text-xs font-medium uppercase tracking-[0.26em] text-muted-foreground">
-                Next step
+      <div className="border-t px-4 py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-16 lg:grid-cols-2">
+            <div>
+              <p className="text-[10px] font-mono tracking-widest text-muted-foreground/40 uppercase">
+                Philosophy
               </p>
-              <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
-                Carry this language through docs, component pages, and blocks.
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
-                Once the landing page feels right, the rest of the product needs
-                to match it exactly so the whole library feels coherent.
+              <p className="mt-6 text-sm text-muted-foreground leading-[1.8] max-w-prose">
+                Components should be simple to use and trivial to own.
+                No build step. No registry. No package to maintain.
+              </p>
+              <p className="mt-4 text-sm text-muted-foreground leading-[1.8] max-w-prose">
+                Each component is a single file. Read it. Modify it. Ship it.
+                The code is yours — MIT licensed, zero dependencies.
+              </p>
+              <p className="mt-4 text-sm text-muted-foreground leading-[1.8] max-w-prose">
+                Dark mode included. Accessible by default.
+                Built with React and Tailwind CSS.
               </p>
             </div>
-
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Link href="/components">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Browse components
-                </Button>
-              </Link>
-              <Link href="/blocks">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Browse blocks
-                </Button>
-              </Link>
+            <div className="border-l border-border/40 pl-8">
+              <p className="text-[10px] font-mono tracking-widest text-muted-foreground/40 uppercase">
+                One rule
+              </p>
+              <p className="mt-6 text-lg font-medium leading-relaxed text-foreground">
+                If you can&apos;t read the source, you don&apos;t own the component.
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                No minified code. No generated files. Every component is a plain
+                TypeScript file you can open and understand in seconds.
+              </p>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+
+      <div className="border-t px-4 py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <p className="text-[10px] font-mono tracking-widest text-muted-foreground/40 uppercase">
+                Get started
+              </p>
+              <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-prose">
+                MIT licensed. Zero dependencies. Drop into any Next.js or React project.
+              </p>
+              <div className="mt-6">
+                <Link href="/components">
+                  <Button>Browse Components</Button>
+                </Link>
+              </div>
+            </div>
+            <div>
+              <div className="rounded-lg border bg-codebg p-4">
+                <pre className="text-xs font-mono text-muted-foreground leading-relaxed">
+                  <span className="text-muted-foreground/40"># Install a single component</span>
+                  {"\n"}
+                  <span className="text-primary">$</span> npx impic-ui add button
+                  {"\n"}
+                  <span className="text-muted-foreground/40"># Or add them all</span>
+                  {"\n"}
+                  <span className="text-primary">$</span> npx impic-ui add --all
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t px-4 py-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <p className="text-[10px] text-muted-foreground font-mono tracking-wider uppercase">
+            Built by zaid · MIT
+          </p>
+          <Link
+            href="https://github.com/icancodefyi/impic-ui"
+            target="_blank"
+            className="text-[10px] text-muted-foreground hover:text-foreground transition-colors font-mono tracking-wider uppercase"
+          >
+            GitHub &rarr;
+          </Link>
+        </div>
+      </div>
+    </>
   )
 }
