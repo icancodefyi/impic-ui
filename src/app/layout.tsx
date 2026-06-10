@@ -1,39 +1,43 @@
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 
-import "./globals.css"
+import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-})
+  display: "swap",
+});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-})
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "impic-ui — Beautiful copy-paste UI components",
   description:
     "Open-source copy-paste UI components for your next project. Built with React, Tailwind CSS, and Framer Motion.",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <main className="flex-1">{children}</main>
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
