@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
-import { ArrowRight, Blocks, Component, Star } from "lucide-react";
+import { ArrowRight, Blocks, Component, Star, Search, ChevronDown, Terminal, Sparkles } from "lucide-react";
 
 const reviews = [
   { name: "SoraiaDev", handle: "@SoraiaDev", body: "king of design" },
@@ -47,14 +47,130 @@ const projects = [
 ];
 
 const componentPreviews = [
-  { name: "Animated Card", category: "Interactive" },
-  { name: "Code Block", category: "Display" },
-  { name: "Accordion", category: "Layout" },
-  { name: "Badge", category: "Data Display" },
-  { name: "Button", category: "Form" },
-  { name: "Tabs", category: "Navigation" },
-  { name: "Input", category: "Form" },
-  { name: "Marquee", category: "Animation" },
+  {
+    name: "Buttons",
+    category: "Interactive",
+    preview: () => (
+      <div className="flex flex-wrap gap-2 items-center justify-center">
+        <button className="px-3 py-1.5 text-xs rounded-lg bg-primary text-primary-foreground font-medium">Primary</button>
+        <button className="px-3 py-1.5 text-xs rounded-lg border border-border bg-background text-foreground font-medium">Secondary</button>
+        <button className="px-3 py-1.5 text-xs rounded-lg bg-foreground text-background font-medium">Dark</button>
+      </div>
+    ),
+  },
+  {
+    name: "Badges",
+    category: "Data Display",
+    preview: () => (
+      <div className="flex flex-wrap gap-2 items-center justify-center">
+        <span className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">New</span>
+        <span className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">Active</span>
+        <span className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-muted text-muted-foreground">Draft</span>
+      </div>
+    ),
+  },
+  {
+    name: "Inputs",
+    category: "Form",
+    preview: () => (
+      <div className="w-full space-y-2">
+        <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2">
+          <Search className="size-3.5 text-muted-foreground" />
+          <input
+            readOnly
+            placeholder="Search..."
+            className="text-xs bg-transparent outline-none w-full text-foreground placeholder:text-muted-foreground"
+          />
+          <kbd className="hidden sm:inline-flex text-[10px] px-1.5 py-0.5 rounded border border-border bg-muted text-muted-foreground">⌘K</kbd>
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: "Cards",
+    category: "Layout",
+    preview: () => (
+      <div className="w-full max-w-[200px] rounded-xl border border-border bg-card p-3 space-y-2">
+        <div className="h-12 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-lg font-bold">A</div>
+        <div>
+          <div className="text-[11px] font-medium text-foreground">Card Title</div>
+          <div className="text-[10px] text-muted-foreground">Description</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: "Tabs",
+    category: "Navigation",
+    preview: () => (
+      <div className="flex gap-0.5 rounded-lg bg-muted p-0.5">
+        <button className="px-3 py-1.5 text-[11px] font-medium rounded-md bg-background text-foreground shadow-sm">Preview</button>
+        <button className="px-3 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground hover:text-foreground">Code</button>
+        <button className="px-3 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground hover:text-foreground">Settings</button>
+      </div>
+    ),
+  },
+  {
+    name: "Code Block",
+    category: "Display",
+    preview: () => (
+      <div className="w-full rounded-lg bg-foreground/5 dark:bg-white/5 border border-border p-3 font-mono text-[10px] leading-relaxed">
+        <div className="flex items-center gap-2 mb-2 pb-2 border-b border-border/50">
+          <Terminal className="size-3 text-muted-foreground" />
+          <span className="text-muted-foreground text-[10px]">install.sh</span>
+        </div>
+        <code className="text-foreground">npm install <span className="text-blue-500">impic-ui</span></code>
+      </div>
+    ),
+  },
+  {
+    name: "Accordion",
+    category: "Layout",
+    preview: () => (
+      <div className="w-full divide-y divide-border rounded-lg border border-border">
+        <div className="flex items-center justify-between px-3 py-2.5">
+          <span className="text-[11px] font-medium text-foreground">Getting Started</span>
+          <ChevronDown className="size-3 text-muted-foreground" />
+        </div>
+        <div className="flex items-center justify-between px-3 py-2.5">
+          <span className="text-[11px] font-medium text-foreground">Installation</span>
+          <ChevronDown className="size-3 text-muted-foreground" />
+        </div>
+        <div className="flex items-center justify-between px-3 py-2.5">
+          <span className="text-[11px] font-medium text-foreground">Components</span>
+          <ChevronDown className="size-3 text-muted-foreground rotate-180" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: "Tooltips",
+    category: "Overlay",
+    preview: () => (
+      <div className="flex items-center gap-4 justify-center">
+        <div className="relative group">
+          <div className="size-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">Z</div>
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-foreground text-background text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            Profile
+          </div>
+        </div>
+        <div className="relative group">
+          <Sparkles className="size-5 text-muted-foreground" />
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-foreground text-background text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            Premium
+          </div>
+        </div>
+        <div className="relative group">
+          <div className="size-5 rounded-full bg-muted flex items-center justify-center">
+            <span className="text-[10px] text-muted-foreground">?</span>
+          </div>
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-foreground text-background text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            Help
+          </div>
+        </div>
+      </div>
+    ),
+  },
 ];
 
 export default function Home() {
@@ -224,15 +340,8 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="group flex flex-col relative items-center overflow-hidden justify-center bg-white dark:bg-black pt-10 pb-8 px-6 transition"
                       >
-                        {/* Noise texture */}
-                        <svg className="absolute top-0 left-0 z-2 w-full h-full mix-blend-multiply opacity-50" xmlns="http://www.w3.org/2000/svg">
-                          <defs>
-                            <filter id={`noise-${index}`}>
-                              <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" />
-                            </filter>
-                          </defs>
-                          <rect width="100%" height="100%" filter={`url(#noise-${index})`} />
-                        </svg>
+                        {/* Noise texture — theme-adaptive */}
+                        <div className="absolute inset-0 z-2 opacity-[0.04] dark:opacity-[0.07] bg-[repeating-linear-gradient(45deg,hsl(var(--foreground))_0px_0.5px,transparent_0.5px_3px),repeating-linear-gradient(-45deg,hsl(var(--foreground))_0px_0.5px,transparent_0.5px_3px)]" />
 
                         {/* Unique logo per card */}
                         <div className="flex h-44 relative z-10 items-center justify-center">
@@ -303,17 +412,19 @@ export default function Home() {
                 <Link
                   key={component.name}
                   href="/components"
-                  className="group relative rounded-xl border border-border bg-card overflow-hidden transition-all hover:shadow-md"
+                  className="group relative rounded-xl border border-border bg-card overflow-hidden transition-all hover:shadow-md hover:border-foreground/20"
                 >
-                  <span className="absolute top-2 transition-all group-hover:opacity-100 opacity-0 text-xs px-2 py-0.5 bg-muted right-2 z-10 rounded-md">
-                    Preview
-                  </span>
-                  <div className="p-5 min-h-[160px] flex flex-col justify-end">
-                    <div className="text-sm font-medium text-foreground">
-                      {component.name}
+                  <div className="p-5 min-h-[160px] flex flex-col">
+                    <div className="flex-1 flex items-center justify-center mb-3">
+                      <component.preview />
                     </div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      {component.category}
+                    <div className="border-t border-border/50 pt-3">
+                      <div className="text-sm font-medium text-foreground">
+                        {component.name}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-0.5">
+                        {component.category}
+                      </div>
                     </div>
                   </div>
                 </Link>
