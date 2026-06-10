@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Marquee } from "@/components/ui/marquee"
+import Image from "next/image"
 import { ArrowRight, Blocks, Component, Star } from "lucide-react"
 
 const reviews = [
@@ -59,7 +60,27 @@ export default function Home() {
             <div className="border-b border-border w-full h-16 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
             
             <div className="relative z-10">
-              <article className="grid gap-4 p-5 2xl:p-10">
+                
+                {/* Background artwork behind hero content */}
+               <div className="absolute inset-0 flex justify-center pointer-events-none overflow-hidden">
+  <div className="relative w-[900px] h-[450px] opacity-40">
+    <Image
+      src="https://assets.aceternity.com/components/mountains-snow.webp"
+      alt="mountains"
+      fill
+      priority
+      className="object-cover blur-[1px]"
+    />
+
+    {/* fade bottom */}
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+
+    {/* fade sides */}
+    <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+  </div>
+</div>
+
+                <article className="grid gap-4 p-5 2xl:p-10">
                 <div className="flex justify-center">
                   <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
