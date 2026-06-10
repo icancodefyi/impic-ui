@@ -1,186 +1,342 @@
-import React from 'react'
-import { ArrowRight, Blocks, Component, ExternalLink } from 'lucide-react'
+"use client"
 
-const features = [
+import Link from "next/link"
+import { Marquee } from "@/components/ui/marquee"
+import { ArrowRight, Blocks, Component, ExternalLink, Star } from "lucide-react"
+
+const reviews = [
+  { name: "SoraiaDev", handle: "@SoraiaDev", body: "king of design", verified: true },
+  { name: "Victor", handle: "@victor_bigfield", body: "love this minimalist style", verified: true },
+  { name: "OrcDev", handle: "@orcdev", body: "let's go! new blood", verified: true },
+  { name: "Kartik", handle: "@code_kartik", body: "this is really good man", verified: true },
+  { name: "Daniele", handle: "@daniele_packard", body: "Looks very slick - congrats!", verified: true },
+  { name: "Sayan", handle: "@thesayannayak", body: "This is really good !!", verified: true },
+]
+
+const projects = [
   {
-    icon: Blocks,
-    title: 'Copy & Paste',
-    desc: 'Grab any component, drop it in your project. No packages, no dependencies, no bloat.',
+    name: "Components",
+    link: "/components",
+    gradient: "from-blue-100 via-blue-500 to-blue-600",
+    description: "Copy-paste UI primitives",
   },
   {
-    icon: Component,
-    title: 'Built for React',
-    desc: 'Every component is crafted with React and Tailwind CSS. Works with Next.js out of the box.',
+    name: "Blocks",
+    link: "/blocks",
+    gradient: "from-violet-100 via-violet-500 to-violet-600",
+    description: "Ready-to-use sections",
+  },
+  {
+    name: "Docs",
+    link: "/docs",
+    gradient: "from-amber-100 via-amber-500 to-amber-600",
+    description: "Guides and references",
   },
 ]
 
-const stats = [
-  { value: '50+', label: 'Components' },
-  { value: '0', label: 'Dependencies' },
-  { value: '100%', label: 'Free & Open' },
-]
-
-const components = [
-  'Hero Sections',
-  'Feature Cards',
-  'Pricing Tables',
-  'Testimonials',
-  'CTA Sections',
-  'Navigation Bars',
-  'Footer Layouts',
-  'Auth Forms',
+const componentPreviews = [
+  { name: "Animated Card", category: "Interactive" },
+  { name: "Code Block", category: "Display" },
+  { name: "Accordion", category: "Layout" },
+  { name: "Badge", category: "Data Display" },
+  { name: "Button", category: "Form" },
+  { name: "Tabs", category: "Navigation" },
+  { name: "Input", category: "Form" },
+  { name: "Marquee", category: "Animation" },
 ]
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="relative py-24 px-5">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 border border-zinc-200 rounded-full px-4 py-1.5 text-sm text-zinc-600 mb-8">
-            <span className="size-2 bg-green-500 rounded-full animate-pulse" />
-            Open Source
-          </div>
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter text-zinc-950 leading-[1.1] mb-6">
-            Copy, Paste UI
-            <br />
-            Components
-          </h1>
-          <p className="text-lg text-zinc-500 max-w-2xl mx-auto mb-10">
-            Production-ready React components you can drop into your projects. 
-            No packages to install. Just copy the code and ship faster.
-          </p>
-          <div className="flex gap-3 justify-center">
-            <a
-              href="/components"
-              className="inline-flex items-center gap-2 bg-zinc-950 text-white px-6 py-3 rounded-xl font-medium hover:bg-zinc-800 transition-colors"
-            >
-              <Component className="size-5" />
-              Browse Components
-            </a>
-            <a
-              href="https://github.com/icancodefyi/impic-ui"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-zinc-200 px-6 py-3 rounded-xl font-medium text-zinc-700 hover:bg-zinc-50 transition-colors"
-            >
-              GitHub
-              <ExternalLink className="size-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Container wrapper */}
+      <div className="mx-auto w-full px-2">
+        <div className="relative mx-auto max-w-[1400px] px-5 lg:px-10">
+          {/* Left decorative column */}
+          <div className="border-x w-5 bg-white h-full absolute top-0 left-0 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
+          {/* Right decorative column */}
+          <div className="border-x w-5 bg-white h-full absolute top-0 right-0 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
 
-      {/* Grid pattern section */}
-      <section className="relative border-t border-zinc-200">
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#f3f3f3_0px_1px,transparent_1px_8px)] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-        <div className="relative max-w-7xl mx-auto px-5 py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {features.map((f) => (
-              <div key={f.title} className="flex flex-col items-center text-center">
-                <div className="size-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
-                  <f.icon className="size-6" />
+          {/* Hero Section */}
+          <section className="relative pt-2">
+            <div className="border-b border-zinc-200 w-full h-16 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
+            <div className="relative z-10">
+              <article className="grid gap-4 p-5 2xl:p-10">
+                <div className="flex justify-center">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs text-zinc-600">
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+                    Open Source
+                    <span className="text-zinc-400">·</span>
+                    <span>Free to use</span>
+                  </span>
                 </div>
-                <h3 className="text-xl font-semibold tracking-tight text-zinc-900 mb-3">
-                  {f.title}
-                </h3>
-                <p className="text-zinc-500 text-sm max-w-xs">
-                  {f.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Stats */}
-      <section className="border-t border-zinc-200">
-        <div className="max-w-7xl mx-auto px-5 py-24">
-          <div className="grid grid-cols-3 gap-8">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-5xl md:text-6xl font-medium tracking-tighter text-zinc-950 mb-2">
-                  {s.value}
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <h1 className="2xl:text-6xl xl:text-6xl md:text-6xl sm:text-5xl text-[1.7rem] tracking-tighter text-center font-semibold">
+                  <span className="xl:text-[3.35rem] md:text-5xl sm:text-4xl text-[1.7rem]">
+                    Copy, Paste UI Components,
+                  </span>
+                  <br />
+                  <span>& Blocks for</span>
+                  <span className="ml-2 bg-neutral-50 mt-3 relative w-fit leading-[100%] inline-block px-1.5 py-0.5 border before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[''] before:opacity-[0.09] before:z-10 before:pointer-events-none before:bg-[url('/noise.gif')]">
+                    <span className="bg-linear-to-t from-blue-400 to-blue-600 bg-clip-text text-transparent font-semibold pr-1">
+                      React
+                    </span>
+                  </span>
+                </h1>
 
-      {/* Components list */}
-      <section className="border-t border-zinc-200 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-5 py-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tighter text-zinc-950 mb-4">
-              What You Get
+                <p className="mx-auto 2xl:w-[600px] lg:w-[450px] 2xl:text-lg sm:w-[80%] text-center sm:text-base text-sm text-zinc-500">
+                  Production-ready components you can drop into your projects.
+                  No packages to install. Just copy the code and ship faster.
+                </p>
+
+                <div className="flex gap-3 justify-center items-center">
+                  <Link
+                    href="/components"
+                    className="flex items-center gap-2 w-fit sm:text-base text-sm shadow-[inset_3px_4px_5px_0px_rgba(183,183,183,0.5),inset_-2px_-2px_5px_0px_rgba(255,255,255,0.5)] text-white bg-linear-to-b from-blue-500 to-blue-600 px-5 py-3 rounded-xl"
+                  >
+                    <Blocks className="w-5 h-5" /> Browse Components
+                  </Link>
+                  <Link
+                    href="https://github.com/icancodefyi/impic-ui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 w-fit sm:text-base text-sm shadow-lg shadow-neutral-300 text-zinc-900 px-5 py-3 rounded-xl border border-zinc-200"
+                  >
+                    <Component className="w-5 h-5" /> GitHub
+                  </Link>
+                </div>
+
+                {/* Trust badge */}
+                <div className="flex w-fit mx-auto sm:items-center justify-center mt-5">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <div
+                        key={i}
+                        className="bg-neutral-50 p-1 shrink-0 relative z-10 hover:z-20"
+                        style={{ marginLeft: i > 1 ? "-0.5rem" : 0 }}
+                      >
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                          {String.fromCharCode(64 + i)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="-translate-x-3">
+                    <div className="flex gap-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="h-4 w-4 text-amber-400 fill-current" />
+                      ))}
+                    </div>
+                    <div className="text-xs font-medium text-zinc-600">Trusted by developers</div>
+                  </div>
+                </div>
+              </article>
+
+              {/* GapPattern divider */}
+              <div className="border-y border-zinc-200 w-full h-5 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
+
+              {/* Reviews Marquee */}
+              <div className="relative py-10 px-5">
+                <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden">
+                  <Marquee pauseOnHover className="[--duration:80s]">
+                    {reviews.map((review) => (
+                      <div
+                        key={review.name}
+                        className="shrink-0 w-72 flex flex-col justify-center h-28 bg-neutral-50 border border-zinc-200 p-4 transition-all duration-300 hover:scale-105 mx-2"
+                      >
+                        <div className="flex items-center mb-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                            {review.name.charAt(0)}
+                          </div>
+                          <div className="ml-2 flex-1">
+                            <div className="flex items-center gap-1">
+                              <span className="font-semibold text-xs">{review.name}</span>
+                              {review.verified && <Star className="w-2.5 h-2.5 text-blue-500 fill-current" />}
+                            </div>
+                            <div className="text-[10px] text-zinc-500">{review.handle}</div>
+                          </div>
+                        </div>
+                        <p className="text-xs leading-relaxed text-zinc-600 line-clamp-2">{review.body}</p>
+                      </div>
+                    ))}
+                  </Marquee>
+                  <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-white" />
+                  <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-white" />
+                </div>
+              </div>
+
+              {/* GapPattern divider */}
+              <div className="border-y border-zinc-200 w-full h-5 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
+
+              {/* Project Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
+                {projects.map((project) => (
+                  <Link
+                    key={project.name}
+                    href={project.link}
+                    className="group relative overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all hover:shadow-lg"
+                  >
+                    <svg
+                      className="absolute top-0 left-0 z-[2] w-full h-full mix-blend-multiply opacity-50"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <defs>
+                        <filter id={`noise-${project.name}`}>
+                          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" />
+                        </filter>
+                      </defs>
+                      <rect width="100%" height="100%" filter={`url(#noise-${project.name})`} />
+                    </svg>
+                    <div className="relative z-10 p-8 flex flex-col items-center justify-center min-h-[200px]">
+                      <div className={`mb-4 size-16 rounded-2xl bg-linear-to-br ${project.gradient} flex items-center justify-center`}>
+                        <span className="text-white text-2xl font-bold">{project.name.charAt(0)}</span>
+                      </div>
+                      <div className="font-semibold text-lg text-zinc-900">{project.name}</div>
+                      <div className="text-sm text-zinc-500 mt-1">{project.description}</div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#acacac2d_1px,transparent_1px),linear-gradient(to_bottom,#acacac2d_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+                  </Link>
+                ))}
+              </div>
+
+              {/* GapPattern divider */}
+              <div className="border-y border-zinc-200 w-full h-5 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
+            </div>
+          </section>
+
+          {/* Components Showcase */}
+          <section className="relative p-5">
+            <h2 className="xl:text-5xl md:text-4xl text-2xl font-medium tracking-tighter text-center mb-10">
+              Ready-to-Use Components
             </h2>
-            <p className="text-zinc-500 max-w-lg mx-auto">
-              A growing library of production-ready components, all free and open source.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {components.map((c) => (
-              <div
-                key={c}
-                className="bg-white rounded-2xl p-6 border border-zinc-200 text-center font-medium text-zinc-700 hover:border-zinc-300 transition-colors"
-              >
-                {c}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {componentPreviews.map((component) => (
+                <Link
+                  key={component.name}
+                  href="/components"
+                  className="group relative rounded-xl border border-zinc-200 bg-white overflow-hidden transition-all hover:shadow-md"
+                >
+                  <span className="absolute top-2 transition-all group-hover:opacity-100 opacity-0 text-xs px-2 py-0.5 bg-neutral-200 right-2 z-10 rounded-md">
+                    Preview
+                  </span>
+                  <div className="p-5 min-h-[160px] flex flex-col justify-end">
+                    <div className="text-sm font-medium text-zinc-900">{component.name}</div>
+                    <div className="text-xs text-zinc-500 mt-1">{component.category}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <Link
+              href="/components"
+              className="flex w-fit mx-auto mt-8 text-sm py-2 px-4 bg-neutral-100 justify-center group font-medium items-center gap-2 rounded-lg border border-zinc-200"
+            >
+              Browse all <span className="text-zinc-500">Components</span>
+              <ArrowRight className="group-hover:translate-x-1 transition-all" />
+            </Link>
+          </section>
+
+          {/* GapPattern divider */}
+          <div className="border-y border-zinc-200 w-full h-5 bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]" />
+
+          {/* Stats Section */}
+          <section className="py-20 px-5">
+            <div className="max-w-5xl mx-auto">
+              <div className="md:flex justify-between items-center border-b border-zinc-200 pb-10 mb-10">
+                <div className="flex flex-col md:flex-row items-baseline gap-4">
+                  <span className="text-7xl md:text-8xl lg:text-9xl font-medium tracking-tighter text-zinc-950">
+                    50+
+                  </span>
+                  <div className="max-w-xs">
+                    <h3 className="text-xl font-semibold tracking-tight">Components</h3>
+                    <p className="text-sm text-zinc-500 mt-1">Production-ready React components you can copy and paste.</p>
+                  </div>
+                </div>
+                <div className="mt-6 md:mt-0 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-8 flex items-center justify-center">
+                  <div className="text-3xl font-bold text-blue-600">React</div>
+                </div>
               </div>
-            ))}
+
+              <div className="grid grid-cols-3 gap-8">
+                <div>
+                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-zinc-950 mb-2">0</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Dependencies</p>
+                </div>
+                <div>
+                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-zinc-950 mb-2">100%</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Free & Open Source</p>
+                </div>
+                <div>
+                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-zinc-950 mb-2">MIT</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">License</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      {/* CTA Footer - full width */}
+      <section className="bg-neutral-100 pt-20">
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="relative z-10 -mb-20">
+            <div className="bg-linear-to-r from-gray-200 to-gray-300 rounded-2xl overflow-hidden h-80 relative group shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+              <div className="absolute inset-0 bg-black/20 flex flex-col justify-center p-10 md:p-16">
+                <h2 className="text-white text-4xl md:text-5xl font-bold max-w-xl mb-6">
+                  Start building beautiful interfaces today
+                </h2>
+                <Link
+                  href="/components"
+                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full w-fit font-semibold hover:bg-blue-700 transition-colors group"
+                >
+                  Browse components
+                  <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-black rounded-t-3xl pt-32 pb-16 px-5 md:px-10 text-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pb-8">
+              <div className="space-y-8">
+                <div className="text-3xl font-bold tracking-tighter">
+                  <span>impic</span>
+                  <span className="text-blue-500">-ui</span>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider">Connect</h4>
+                  <a
+                    href="https://github.com/icancodefyi/impic-ui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-full text-sm hover:bg-white hover:text-black transition-colors"
+                  >
+                    GitHub <ExternalLink className="size-3" />
+                  </a>
+                </div>
+              </div>
+              <div className="space-y-4 lg:text-right">
+                <h3 className="text-lg font-medium text-gray-400">Copy-paste UI components for React</h3>
+                <p className="text-sm text-gray-500 max-w-md lg:ml-auto">
+                  Production-ready components you can drop into your projects. No packages, no dependencies.
+                </p>
+              </div>
+            </div>
+
+            <nav className="border-t border-gray-800 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm font-medium text-gray-300">
+              <Link href="/components" className="hover:text-white transition-colors">Components</Link>
+              <Link href="/blocks" className="hover:text-white transition-colors">Blocks</Link>
+              <Link href="/docs" className="hover:text-white transition-colors">Documentation</Link>
+              <a href="https://github.com/icancodefyi/impic-ui" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+            </nav>
+
+            <div className="py-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+              <span className="font-semibold text-lg">impic-ui</span>
+              <span className="text-gray-500 text-sm">© 2026 impic-ui. All rights reserved.</span>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="border-t border-zinc-200">
-        <div className="max-w-7xl mx-auto px-5 py-32 text-center">
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tighter text-zinc-950 mb-6">
-            Start Building Today
-          </h2>
-          <p className="text-zinc-500 max-w-lg mx-auto mb-10">
-            No sign-up required. Just browse, copy, and paste into your project.
-          </p>
-          <a
-            href="/components"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-medium hover:bg-blue-700 transition-colors"
-          >
-            Browse Components
-            <ArrowRight className="size-5" />
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-zinc-200 bg-zinc-950 text-white">
-        <div className="max-w-7xl mx-auto px-5 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <span className="text-xl font-semibold tracking-tight">impic-ui</span>
-              <p className="text-zinc-500 text-sm mt-2">
-                Copy-paste UI components for React.
-              </p>
-            </div>
-            <div className="flex gap-4 md:justify-end">
-              <a
-                href="https://github.com/icancodefyi/impic-ui"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-zinc-800 px-4 py-2 rounded-full text-sm hover:bg-white hover:text-zinc-950 transition-colors"
-              >
-                GitHub
-                <ExternalLink className="size-4" />
-              </a>
-            </div>
-          </div>
-          <div className="border-t border-zinc-800 mt-8 pt-8 text-center text-sm text-zinc-500">
-            © 2026 impic-ui. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
