@@ -27,19 +27,22 @@ const projects = [
     name: "Components",
     link: "/components",
     description: "Copy-paste UI primitives",
-    gradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #2784fd 100%)",
+    darkGradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #2784fd 100%)",
+    lightGradient: "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #3d6aff 100%)",
   },
   {
     name: "Blocks",
     link: "/blocks",
     description: "Ready-to-use sections",
-    gradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #7c3aed 100%)",
+    darkGradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #7c3aed 100%)",
+    lightGradient: "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #8b5cf6 100%)",
   },
   {
     name: "Docs",
     link: "/docs",
     description: "Guides and references",
-    gradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #f59e0b 100%)",
+    darkGradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #f59e0b 100%)",
+    lightGradient: "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #f59e0b 100%)",
   },
 ];
 
@@ -219,8 +222,9 @@ export default function Home() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col relative items-center overflow-hidden justify-center bg-black p-6 transition"
+                        className="group flex flex-col relative items-center overflow-hidden justify-center bg-black dark:bg-black bg-white p-6 transition"
                       >
+                        {/* Noise texture */}
                         <svg className="absolute top-0 left-0 z-2 w-full h-full mix-blend-multiply opacity-50" xmlns="http://www.w3.org/2000/svg">
                           <defs>
                             <filter id={`noise-${index}`}>
@@ -229,15 +233,45 @@ export default function Home() {
                           </defs>
                           <rect width="100%" height="100%" filter={`url(#noise-${index})`} />
                         </svg>
+
+                        {/* Unique logo per card */}
                         <div className="mb-4 flex h-60 relative z-10 items-center justify-center">
-                          <svg width="200" height="60" viewBox="0 0 200 60" className="fill-white opacity-90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" fontSize="48" fontWeight="bold" fontFamily="Inter, sans-serif">
-                              {project.name}
-                            </text>
-                          </svg>
+                          {index === 0 && (
+                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect x="5" y="5" width="50" height="50" rx="8" className="fill-white dark:fill-white fill-foreground" />
+                              <rect x="65" y="5" width="50" height="50" rx="8" className="fill-white/50 dark:fill-white/50 fill-foreground/50" />
+                              <rect x="5" y="65" width="50" height="50" rx="8" className="fill-white/50 dark:fill-white/50 fill-foreground/50" />
+                              <rect x="65" y="65" width="50" height="50" rx="8" className="fill-white/30 dark:fill-white/30 fill-foreground/30" />
+                            </svg>
+                          )}
+                          {index === 1 && (
+                            <svg width="140" height="100" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect x="10" y="5" width="120" height="26" rx="6" className="fill-white dark:fill-white fill-foreground" />
+                              <rect x="20" y="37" width="100" height="26" rx="6" className="fill-white/60 dark:fill-white/60 fill-foreground/60" />
+                              <rect x="30" y="69" width="80" height="26" rx="6" className="fill-white/35 dark:fill-white/35 fill-foreground/35" />
+                            </svg>
+                          )}
+                          {index === 2 && (
+                            <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65C75 65 90 73 100 85V30C90 18 75 10 60 10Z" className="fill-white dark:fill-white fill-foreground" />
+                              <path d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65" className="fill-white/60 dark:fill-white/60 fill-foreground/60" />
+                              <line x1="60" y1="10" x2="60" y2="65" className="stroke-black/20 dark:stroke-black/20 stroke-white/40" strokeWidth="2" />
+                            </svg>
+                          )}
                         </div>
+
+                        {/* Grid pattern overlay */}
                         <div className="absolute bottom-0 left-0 right-0 top-0 dark:bg-[linear-gradient(to_right,#2120202e_1px,transparent_1px),linear-gradient(to_bottom,#2120202e_1px,transparent_1px)] bg-[linear-gradient(to_right,#acacac2d_1px,transparent_1px),linear-gradient(to_bottom,#acacac2d_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-                        <div className="absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)]" style={{ background: project.gradient }} />
+
+                        {/* Theme-responsive gradient background */}
+                        <div
+                          className="absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)] dark:block hidden"
+                          style={{ background: project.darkGradient }}
+                        />
+                        <div
+                          className="absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)] dark:hidden block"
+                          style={{ background: project.lightGradient }}
+                        />
                       </a>
                     </div>
                   </div>
