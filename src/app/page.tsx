@@ -1,18 +1,26 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Marquee } from "@/components/ui/marquee"
-import Image from "next/image"
-import { ArrowRight, Blocks, Component, Star } from "lucide-react"
+import Link from "next/link";
+import { Marquee } from "@/components/ui/marquee";
+import Image from "next/image";
+import { ArrowRight, Blocks, Component, Star } from "lucide-react";
 
 const reviews = [
   { name: "SoraiaDev", handle: "@SoraiaDev", body: "king of design" },
-  { name: "Victor", handle: "@victor_bigfield", body: "love this minimalist style" },
+  {
+    name: "Victor",
+    handle: "@victor_bigfield",
+    body: "love this minimalist style",
+  },
   { name: "OrcDev", handle: "@orcdev", body: "let's go! new blood" },
   { name: "Kartik", handle: "@code_kartik", body: "this is really good man" },
-  { name: "Daniele", handle: "@daniele_packard", body: "Looks very slick - congrats!" },
+  {
+    name: "Daniele",
+    handle: "@daniele_packard",
+    body: "Looks very slick - congrats!",
+  },
   { name: "Sayan", handle: "@thesayannayak", body: "This is really good !!" },
-]
+];
 
 const projects = [
   {
@@ -33,7 +41,7 @@ const projects = [
     gradient: "from-amber-500 to-amber-600",
     description: "Guides and references",
   },
-]
+];
 
 const componentPreviews = [
   { name: "Animated Card", category: "Interactive" },
@@ -44,7 +52,7 @@ const componentPreviews = [
   { name: "Tabs", category: "Navigation" },
   { name: "Input", category: "Form" },
   { name: "Marquee", category: "Animation" },
-]
+];
 
 export default function Home() {
   return (
@@ -58,29 +66,28 @@ export default function Home() {
           {/* Hero */}
           <section className="relative pt-2">
             <div className="border-b border-border w-full h-16 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
-            
+
             <div className="relative z-10">
-                
-                {/* Background artwork behind hero content */}
-               <div className="absolute inset-0 flex justify-center pointer-events-none overflow-hidden">
-  <div className="relative w-[900px] h-[450px] opacity-40">
-    <Image
-      src="https://assets.aceternity.com/components/mountains-snow.webp"
-      alt="mountains"
-      fill
-      priority
-      className="object-cover blur-[1px]"
-    />
+              {/* Background artwork behind hero content */}
+              <div className="absolute inset-0 flex justify-center pointer-events-none overflow-hidden">
+                <div className="relative w-[900px] h-[450px] opacity-40">
+                  <Image
+                    src="https://assets.aceternity.com/components/mountains-snow.webp"
+                    alt="mountains"
+                    fill
+                    priority
+                    className="object-cover blur-[1px]"
+                  />
 
-    {/* fade bottom */}
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+                  {/* fade bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
 
-    {/* fade sides */}
-    <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
-  </div>
-</div>
+                  {/* fade sides */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+                </div>
+              </div>
 
-                <article className="grid gap-4 p-5 2xl:p-10">
+              <article className="grid gap-4 p-5 2xl:p-10">
                 <div className="flex justify-center">
                   <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -143,16 +150,21 @@ export default function Home() {
                   <div className="-translate-x-3">
                     <div className="flex gap-0.5">
                       {[1, 2, 3, 4, 5].map((i) => (
-                        <Star key={i} className="h-4 w-4 text-amber-400 fill-current" />
+                        <Star
+                          key={i}
+                          className="h-4 w-4 text-amber-400 fill-current"
+                        />
                       ))}
                     </div>
-                    <div className="text-xs font-medium text-muted-foreground">Trusted by developers</div>
+                    <div className="text-xs font-medium text-muted-foreground">
+                      Trusted by developers
+                    </div>
                   </div>
                 </div>
               </article>
 
               {/* GapPattern */}
-              <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]"  />
+              <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
 
               {/* Reviews Marquee */}
               <div className="relative py-10 px-5">
@@ -169,13 +181,19 @@ export default function Home() {
                           </div>
                           <div className="ml-2 flex-1">
                             <div className="flex items-center gap-1">
-                              <span className="font-semibold text-xs">{review.name}</span>
+                              <span className="font-semibold text-xs">
+                                {review.name}
+                              </span>
                               <Star className="w-2.5 h-2.5 text-blue-500 fill-current" />
                             </div>
-                            <div className="text-[10px] text-muted-foreground">{review.handle}</div>
+                            <div className="text-[10px] text-muted-foreground">
+                              {review.handle}
+                            </div>
                           </div>
                         </div>
-                        <p className="text-xs leading-relaxed text-muted-foreground line-clamp-2">{review.body}</p>
+                        <p className="text-xs leading-relaxed text-muted-foreground line-clamp-2">
+                          {review.body}
+                        </p>
                       </div>
                     ))}
                   </Marquee>
@@ -185,7 +203,7 @@ export default function Home() {
               </div>
 
               {/* GapPattern */}
-              <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]"  />
+              <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
 
               {/* Project Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
@@ -196,11 +214,19 @@ export default function Home() {
                     className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-lg"
                   >
                     <div className="relative z-10 p-8 flex flex-col items-center justify-center min-h-[200px]">
-                      <div className={`mb-4 size-16 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
-                        <span className="text-white text-2xl font-bold">{project.name.charAt(0)}</span>
+                      <div
+                        className={`mb-4 size-16 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
+                      >
+                        <span className="text-white text-2xl font-bold">
+                          {project.name.charAt(0)}
+                        </span>
                       </div>
-                      <div className="font-semibold text-lg text-foreground">{project.name}</div>
-                      <div className="text-sm text-muted-foreground mt-1">{project.description}</div>
+                      <div className="font-semibold text-lg text-foreground">
+                        {project.name}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {project.description}
+                      </div>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
                   </Link>
@@ -208,7 +234,7 @@ export default function Home() {
               </div>
 
               {/* GapPattern */}
-              <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]"  />
+              <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
             </div>
           </section>
 
@@ -228,8 +254,12 @@ export default function Home() {
                     Preview
                   </span>
                   <div className="p-5 min-h-[160px] flex flex-col justify-end">
-                    <div className="text-sm font-medium text-foreground">{component.name}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{component.category}</div>
+                    <div className="text-sm font-medium text-foreground">
+                      {component.name}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      {component.category}
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -238,7 +268,8 @@ export default function Home() {
               href="/components"
               className="flex w-fit mx-auto mt-8 text-sm py-2 px-4 bg-muted justify-center group font-medium items-center gap-2 rounded-lg border border-border"
             >
-              Browse all <span className="text-muted-foreground">Components</span>
+              Browse all{" "}
+              <span className="text-muted-foreground">Components</span>
               <ArrowRight className="group-hover:translate-x-1 transition-all" />
             </Link>
           </section>
@@ -255,27 +286,45 @@ export default function Home() {
                     50+
                   </span>
                   <div className="max-w-xs">
-                    <h3 className="text-xl font-semibold tracking-tight">Components</h3>
-                    <p className="text-sm text-muted-foreground mt-1">Production-ready React components you can copy and paste.</p>
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      Components
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Production-ready React components you can copy and paste.
+                    </p>
                   </div>
                 </div>
                 <div className="mt-6 md:mt-0 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl p-8 flex items-center justify-center">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">React</div>
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                    React
+                  </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-8">
                 <div>
-                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-2">0</p>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Dependencies</p>
+                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-2">
+                    0
+                  </p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    Dependencies
+                  </p>
                 </div>
                 <div>
-                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-2">100%</p>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Free & Open Source</p>
+                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-2">
+                    100%
+                  </p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    Free & Open Source
+                  </p>
                 </div>
                 <div>
-                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-2">MIT</p>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">License</p>
+                  <p className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-2">
+                    MIT
+                  </p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    License
+                  </p>
                 </div>
               </div>
             </div>
@@ -312,7 +361,9 @@ export default function Home() {
                   <span className="text-blue-400">-ui</span>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Connect</h4>
+                  <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                    Connect
+                  </h4>
                   <a
                     href="https://github.com/icancodefyi/impic-ui"
                     target="_blank"
@@ -324,27 +375,54 @@ export default function Home() {
                 </div>
               </div>
               <div className="space-y-4 lg:text-right">
-                <h3 className="text-lg font-medium text-muted-foreground">Copy-paste UI components for React</h3>
+                <h3 className="text-lg font-medium text-muted-foreground">
+                  Copy-paste UI components for React
+                </h3>
                 <p className="text-sm text-muted-foreground max-w-md lg:ml-auto">
-                  Production-ready components you can drop into your projects. No packages, no dependencies.
+                  Production-ready components you can drop into your projects.
+                  No packages, no dependencies.
                 </p>
               </div>
             </div>
 
             <nav className="border-t border-border py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm font-medium text-muted-foreground">
-              <Link href="/components" className="hover:text-foreground transition-colors">Components</Link>
-              <Link href="/blocks" className="hover:text-foreground transition-colors">Blocks</Link>
-              <Link href="/docs" className="hover:text-foreground transition-colors">Documentation</Link>
-              <a href="https://github.com/icancodefyi/impic-ui" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+              <Link
+                href="/components"
+                className="hover:text-foreground transition-colors"
+              >
+                Components
+              </Link>
+              <Link
+                href="/blocks"
+                className="hover:text-foreground transition-colors"
+              >
+                Blocks
+              </Link>
+              <Link
+                href="/docs"
+                className="hover:text-foreground transition-colors"
+              >
+                Documentation
+              </Link>
+              <a
+                href="https://github.com/icancodefyi/impic-ui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors"
+              >
+                GitHub
+              </a>
             </nav>
 
             <div className="py-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
               <span className="font-semibold text-lg">impic-ui</span>
-              <span className="text-muted-foreground text-sm">© 2026 impic-ui. All rights reserved.</span>
+              <span className="text-muted-foreground text-sm">
+                © 2026 impic-ui. All rights reserved.
+              </span>
             </div>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

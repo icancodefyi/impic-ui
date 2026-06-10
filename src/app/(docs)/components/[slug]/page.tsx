@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation"
-import Link from "next/link"
 import { componentsRegistry } from "@/lib/components-registry"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -13,25 +12,8 @@ import { HeroSection } from "@/components/blocks/hero-section"
 import { FeaturesSection } from "@/components/blocks/features-section"
 import { PricingSection } from "@/components/blocks/pricing-section"
 import { ComponentPagination } from "@/components/component-pagination"
-
-interface CategoryTag {
-  name: string
-  slug: string
-}
-
-const categoryTags: Record<string, CategoryTag[]> = {
-  button: [{ name: "button", slug: "button" }, { name: "form", slug: "form" }],
-  card: [{ name: "card", slug: "card" }, { name: "layout", slug: "layout" }],
-  badge: [{ name: "badge", slug: "badge" }, { name: "data-display", slug: "data-display" }],
-  input: [{ name: "input", slug: "input" }, { name: "form", slug: "form" }],
-  tabs: [{ name: "tabs", slug: "tabs" }, { name: "navigation", slug: "navigation" }],
-  accordion: [{ name: "accordion", slug: "accordion" }, { name: "data-display", slug: "data-display" }],
-  marquee: [{ name: "marquee", slug: "marquee" }, { name: "animation", slug: "animation" }],
-  "animated-card": [{ name: "card", slug: "card" }, { name: "animation", slug: "animation" }],
-  "hero-section": [{ name: "hero", slug: "hero" }, { name: "block", slug: "block" }],
-  "features-section": [{ name: "features", slug: "features" }, { name: "block", slug: "block" }],
-  "pricing-section": [{ name: "pricing", slug: "pricing" }, { name: "block", slug: "block" }],
-}
+import { TableOfContents } from "@/components/table-of-contents"
+import { GapPattern } from "@/components/gap-pattern"
 
 const componentPreviews: Record<string, { element: React.ReactNode; code: string }> = {
   button: {
@@ -122,9 +104,9 @@ const componentPreviews: Record<string, { element: React.ReactNode; code: string
   "animated-card": {
     element: (
       <div className="grid gap-4 sm:grid-cols-3 w-full max-w-3xl">
-        <AnimatedCard icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>} title="Copy-Paste" description="Just copy and paste components into your project." />
-        <AnimatedCard icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>} title="Animations" description="Smooth animations powered by Framer Motion." />
-        <AnimatedCard icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>} title="Dark Mode" description="Dark mode support built into every component." />
+        <AnimatedCard icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>} title="Copy-Paste" description="Just copy and paste components into your project." variant="default" />
+        <AnimatedCard icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>} title="Animations" description="Smooth animations powered by Framer Motion." variant="muted" />
+        <AnimatedCard icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>} title="Dark Mode" description="Dark mode support built into every component." variant="strong" />
       </div>
     ),
     code: `<AnimatedCard\n  icon={<Icon />}\n  title="Feature"\n  description="Description"\n  variant="blue"\n/>`,
@@ -143,151 +125,134 @@ const componentPreviews: Record<string, { element: React.ReactNode; code: string
   },
 }
 
+function getTocItems() {
+  const sections = ["preview", "installation", "props", "usage"]
+  return sections.map((s) => ({
+    title: s.charAt(0).toUpperCase() + s.slice(1),
+    url: `#${s}`,
+  }))
+}
+
 export default async function ComponentPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params
   const entry = componentsRegistry.find((c) => c.slug === slug)
   if (!entry) notFound()
 
   const preview = componentPreviews[slug]
-  const tags = categoryTags[slug] ?? []
+  const tocItems = getTocItems()
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-        <Link href="/components" className="hover:text-foreground transition-colors">
-          Components
-        </Link>
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m9 18 6-6-6-6"/></svg>
-        <span className="text-foreground">{entry.title}</span>
-      </div>
+    <div className="lg:px-0 lg:pt-0 pt-6 px-3 mt-0 flex w-full lg:gap-10">
+      <div className="w-full relative xl:pl-0 lg:pl-4 pl-0">
+        <section className="3xl:max-w-5xl 2xl:max-w-[900px] xl:max-w-[800px] lg:max-w-[640px] max-w-5xl mx-auto prose prose-zinc pb-5 dark:prose-invert prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h2:mt-10 prose-h2:mb-3 prose-h3:mt-6 prose-h3:mb-2 prose-p:text-sm prose-p:leading-7 prose-p:text-muted-foreground prose-code:text-sm prose-code:bg-muted prose-code:px-1 prose-code:rounded prose-code:font-normal prose-strong:font-medium prose-a:text-foreground prose-table:text-sm lg:pt-4">
+          <article className="not-prose mb-8 mt-0 overflow-hidden rounded-2xl border bg-card p-5">
+            <div className="space-y-4 rounded-md">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <h1 className="flex scroll-m-20 items-center gap-3 text-3xl font-semibold tracking-tight">
+                  <span className="grid h-10 w-10 place-content-center rounded-xl border bg-background">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  </span>
+                  {entry.title}
+                </h1>
+                <div className="flex items-center gap-2">
+                  {entry.category === "block" && <Badge variant="secondary">Block</Badge>}
+                  <Badge variant="outline">React</Badge>
+                  <Badge variant="outline">Tailwind</Badge>
+                </div>
+              </div>
+              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">{entry.description}</p>
+              <div className="flex flex-wrap gap-2 border-t pt-4">
+                <span className="rounded-lg border bg-card px-3 py-1.5 font-mono text-xs text-muted-foreground">
+                  npm install motion clsx tailwind-merge
+                </span>
+                <span className="rounded-lg border bg-muted px-3 py-1.5 font-mono text-xs text-muted-foreground">
+                  {entry.category}
+                </span>
+              </div>
+            </div>
+          </article>
 
-      <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-          {entry.title}
-        </h1>
-        <p className="text-base text-muted-foreground max-w-2xl">
-          {entry.description}
-        </p>
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {tags.map((tag) => (
-              <Link
-                key={tag.slug}
-                href={`/categories/${tag.slug}`}
-                className="inline-flex items-center rounded-full border px-3 py-0.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {tag.name}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+          {preview && (
+            <section id="preview" className="scroll-mt-24">
+              <h2>Preview</h2>
+              <div className="not-prose lab-grid flex min-h-[280px] items-center justify-center overflow-hidden rounded-2xl border bg-background p-8">
+                {preview.element}
+              </div>
+              <div className="not-prose mt-4">
+                <details className="group overflow-hidden rounded-xl border bg-codebg text-white">
+                  <summary className="flex cursor-pointer items-center gap-2 px-4 py-3 text-xs font-medium text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-open:rotate-90"><polyline points="9 18 15 12 9 6"/></svg>
+                    View code
+                  </summary>
+                  <pre className="m-0 overflow-x-auto border-t border-white/10 p-4 text-sm text-white/86"><code>{preview.code}</code></pre>
+                </details>
+              </div>
+            </section>
+          )}
 
-      {preview && (
-        <div className="mb-12">
-          <div className="flex items-center gap-1 border-b border-border mb-6">
-            <span className="px-4 py-2 text-sm font-medium text-foreground border-b-2 border-foreground">
-              Preview
-            </span>
-            <span className="px-4 py-2 text-sm text-muted-foreground cursor-not-allowed">
-              Code
-            </span>
-          </div>
+          <section id="installation" className="scroll-mt-24">
+            <h2>Installation</h2>
+            <p>Copy the component code into your project. Make sure you have the required dependencies:</p>
+            <pre className="not-prose overflow-x-auto rounded-xl border bg-codebg p-4 text-sm text-white"><code>npm install motion clsx tailwind-merge</code></pre>
+            <p>Ensure you have the <code>cn()</code> utility in your <code>lib/utils.ts</code>:</p>
+            <pre className="not-prose overflow-x-auto rounded-xl border bg-codebg p-4 text-sm text-white"><code>{`import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-          <div className="rounded-xl border bg-card p-8 sm:p-12 flex items-center justify-center min-h-[300px]">
-            {preview.element}
-          </div>
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}`}</code></pre>
+          </section>
 
-          <div className="mt-3 flex items-center gap-2">
-            <code className="flex-1 rounded-lg border bg-codebg px-4 py-2.5 text-sm text-muted-foreground font-mono overflow-x-auto">
-              npx shadcn@latest add impic-ui/{slug}
-            </code>
-            <button className="shrink-0 rounded-lg border px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </button>
-          </div>
-        </div>
-      )}
+          <section id="props" className="scroll-mt-24">
+            <h2>Props</h2>
+            <div className="not-prose overflow-x-auto rounded-xl border bg-card">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b bg-muted/70">
+                    <th className="text-left py-2.5 px-4 font-medium">Prop</th>
+                    <th className="text-left py-2.5 px-4 font-medium">Type</th>
+                    <th className="text-left py-2.5 px-4 font-medium">Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <td className="py-2.5 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded">variant</code></td>
+                    <td className="py-2.5 px-4 text-muted-foreground text-xs"><code className="text-xs bg-muted px-1.5 py-0.5 rounded">&quot;default&quot; | &quot;outline&quot; | &quot;ghost&quot; | &quot;secondary&quot;</code></td>
+                    <td className="py-2.5 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded">&quot;default&quot;</code></td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-2.5 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded">size</code></td>
+                    <td className="py-2.5 px-4 text-muted-foreground text-xs"><code className="text-xs bg-muted px-1.5 py-0.5 rounded">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;icon&quot;</code></td>
+                    <td className="py-2.5 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded">&quot;md&quot;</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-      <section className="mb-12">
-        <h2 className="text-xl font-semibold tracking-tight mb-4">
-          Installation
-        </h2>
-        <div className="flex items-center gap-1 border-b border-border mb-6">
-          <span className="px-4 py-2 text-sm font-medium text-foreground border-b-2 border-foreground">
-            CLI
-          </span>
-          <span className="px-4 py-2 text-sm text-muted-foreground cursor-not-allowed">
-            Manual
-          </span>
-        </div>
-        <div className="rounded-lg border bg-codebg p-4">
-          <pre className="text-sm font-mono">npx shadcn@latest add impic-ui/{slug}</pre>
-        </div>
-        <p className="text-sm text-muted-foreground mt-3">
-          Make sure you have the required dependencies installed:
-        </p>
-        <div className="rounded-lg border bg-codebg p-4 mt-2">
-          <pre className="text-sm font-mono">npm install motion clsx tailwind-merge</pre>
-        </div>
-      </section>
-
-      {preview && (
-        <section className="mb-12">
-          <h2 className="text-xl font-semibold tracking-tight mb-4">
-            Usage
-          </h2>
-          <div className="rounded-lg border bg-codebg p-4 overflow-x-auto">
-            <pre className="text-sm font-mono"><code>{preview.code}</code></pre>
-          </div>
+          <section id="usage" className="scroll-mt-24">
+            <h2>Usage</h2>
+            <p>Here&apos;s how to use the component in your project:</p>
+            {preview && (
+              <pre className="not-prose overflow-x-auto rounded-xl border bg-codebg p-4 text-sm text-white"><code>{preview.code}</code></pre>
+            )}
+          </section>
         </section>
-      )}
 
-      <section className="mb-12">
-        <h2 className="text-xl font-semibold tracking-tight mb-4">
-          Props
-        </h2>
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b bg-muted/50">
-                <th className="text-left py-3 px-4 font-medium">Prop</th>
-                <th className="text-left py-3 px-4 font-medium">Type</th>
-                <th className="text-left py-3 px-4 font-medium">Default</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b">
-                <td className="py-3 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">variant</code></td>
-                <td className="py-3 px-4 text-muted-foreground"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">&quot;default&quot; | &quot;outline&quot; | &quot;ghost&quot; | &quot;secondary&quot;</code></td>
-                <td className="py-3 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">&quot;default&quot;</code></td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-3 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">size</code></td>
-                <td className="py-3 px-4 text-muted-foreground"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;icon&quot;</code></td>
-                <td className="py-3 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">&quot;md&quot;</code></td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">children</code></td>
-                <td className="py-3 px-4 text-muted-foreground"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">React.ReactNode</code></td>
-                <td className="py-3 px-4"><code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <div className="border-t pt-8">
         <ComponentPagination currentSlug={slug} />
+
+        <div className="max-w-5xl mx-auto not-prose xl:pb-2 p-2 mt-10 rounded-md text-balance text-center text-sm text-muted-foreground">
+          Built by zaid. The source code is available on{" "}
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">
+            GitHub
+          </a>
+          .
+        </div>
+
+        <GapPattern className="absolute -right-8 top-0 h-full w-[1px] border-x border-y-0 hidden lg:block opacity-50" />
       </div>
 
-      <div className="mt-8 text-center text-sm text-muted-foreground">
-        Built by zaid. The source code is available on{" "}
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">
-          GitHub
-        </a>
-        .
-      </div>
+      <TableOfContents items={tocItems} />
     </div>
   )
 }
