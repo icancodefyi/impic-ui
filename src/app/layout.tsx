@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/header";
 
 import "./globals.css";
 
@@ -31,10 +32,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable} dark`}
     >
       <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
+          <Header />
           <main className="flex-1">{children}</main>
         </ThemeProvider>
       </body>

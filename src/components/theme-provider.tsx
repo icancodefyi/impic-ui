@@ -17,12 +17,12 @@ export function useTheme() {
 }
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light"
+  if (typeof window === "undefined") return "dark"
 
   const stored = localStorage.getItem("theme") as Theme | null
   if (stored) return stored
 
-  return "light"
+  return "dark"
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {

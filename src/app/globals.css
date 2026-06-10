@@ -26,6 +26,18 @@
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
   --breakpoint-3xl: 1600px;
+
+  --animate-marquee: marquee var(--duration) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(calc(-100% - var(--gap))); }
+    to { transform: translateX(0); }
+  }
 }
 
 @layer base {
@@ -51,6 +63,29 @@
     --ring: 217 91% 60%;
     --codebg: 0 0% 95%;
     --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 6% 5%;
+    --foreground: 210 40% 98%;
+    --card: 240 6% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 6% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 240 4% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 240 4% 12%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 217 91% 60%;
+    --codebg: 240 6% 8%;
   }
 }
 
@@ -83,61 +118,4 @@ html {
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--muted-foreground) / 0.3);
   border-radius: 4px;
-}
-
-@utility scrollbar-none {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar { display: none; }
-}
-
-@utility code-bg {
-  background: hsl(var(--codebg));
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-}
-
-@utility glass {
-  background: hsl(var(--background) / 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid hsl(var(--border) / 0.5);
-}
-
-@layer utilities {
-  @keyframes infinite-scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
-
-  @keyframes marquee-reverse {
-    from {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes moving-banner {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 200% 0;
-    }
-  }
 }
