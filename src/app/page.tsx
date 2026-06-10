@@ -222,7 +222,7 @@ export default function Home() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col relative items-center overflow-hidden justify-center bg-white dark:bg-black p-6 transition"
+                        className="group flex flex-col relative items-center overflow-hidden justify-center bg-white dark:bg-black pt-10 pb-8 px-6 transition"
                       >
                         {/* Noise texture */}
                         <svg className="absolute top-0 left-0 z-2 w-full h-full mix-blend-multiply opacity-50" xmlns="http://www.w3.org/2000/svg">
@@ -235,9 +235,9 @@ export default function Home() {
                         </svg>
 
                         {/* Unique logo per card */}
-                        <div className="mb-4 flex h-60 relative z-10 items-center justify-center">
+                        <div className="flex h-44 relative z-10 items-center justify-center">
                           {index === 0 && (
-                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="90" height="90" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <rect x="5" y="5" width="50" height="50" rx="8" className="fill-foreground dark:fill-white" />
                               <rect x="65" y="5" width="50" height="50" rx="8" className="fill-foreground/50 dark:fill-white/50" />
                               <rect x="5" y="65" width="50" height="50" rx="8" className="fill-foreground/50 dark:fill-white/50" />
@@ -245,19 +245,29 @@ export default function Home() {
                             </svg>
                           )}
                           {index === 1 && (
-                            <svg width="140" height="100" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="110" height="80" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <rect x="10" y="5" width="120" height="26" rx="6" className="fill-foreground dark:fill-white" />
                               <rect x="20" y="37" width="100" height="26" rx="6" className="fill-foreground/60 dark:fill-white/60" />
                               <rect x="30" y="69" width="80" height="26" rx="6" className="fill-foreground/35 dark:fill-white/35" />
                             </svg>
                           )}
                           {index === 2 && (
-                            <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="90" height="75" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65C75 65 90 73 100 85V30C90 18 75 10 60 10Z" className="fill-foreground dark:fill-white" />
                               <path d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65" className="fill-foreground/60 dark:fill-white/60" />
                               <line x1="60" y1="10" x2="60" y2="65" className="stroke-foreground/20 dark:stroke-white/40" strokeWidth="2" />
                             </svg>
                           )}
+                        </div>
+
+                        {/* Card text */}
+                        <div className="relative z-10 text-center mt-4">
+                          <div className="text-lg font-semibold tracking-tight text-foreground dark:text-white">
+                            {project.name}
+                          </div>
+                          <div className="text-sm text-muted-foreground dark:text-white/60 mt-1">
+                            {project.description}
+                          </div>
                         </div>
 
                         {/* Grid pattern overlay */}
