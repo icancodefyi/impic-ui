@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "motion/react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const stats = [
   ["08", "blocks"],
@@ -22,6 +23,8 @@ export function HeroSection() {
     <section className="relative overflow-hidden px-4 pb-16 pt-24 sm:px-6 lg:pt-28">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,hsl(var(--foreground)/0.045),transparent_28%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--muted)/0.08))]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-[linear-gradient(to_right,hsl(var(--border)/0.38)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.38)_1px,transparent_1px)] bg-size-[5rem_5rem] mask-[radial-gradient(ellipse_at_center,black,transparent_72%)] opacity-25" />
+     
+
 
       <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.96fr_1.04fr] lg:items-center lg:gap-14">
         <div className="text-left">
@@ -150,6 +153,16 @@ export function HeroSection() {
               </div>
 
               <div className="bg-[linear-gradient(180deg,hsl(var(--muted)/0.1),hsl(var(--background)))] p-5 sm:p-6">
+                <div className="mb-4 flex justify-center">
+                  <Image
+                    src="https://assets.aceternity.com/components/mountains-snow.webp"
+                    alt="Snowy mountains"
+                    width={520}
+                    height={320}
+                    className="rounded-2xl object-cover shadow-sm"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="space-y-3">
                   {[
                     ["Typography", "Large type, tighter copy, less noise."],
