@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useTheme } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
-import { Search, Sun, Moon, Menu, X, Layers, LayoutGrid, BookOpen } from "lucide-react"
+import { Search, Sun, Moon, Menu, X } from "lucide-react"
 
 export function Header() {
   const { theme, toggleTheme } = useTheme()
@@ -44,10 +44,10 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-2 lg:flex">
-          <NavLink href="/components" icon={<Layers className="size-3.5" />}>Components</NavLink>
-          <NavLink href="/blocks" icon={<LayoutGrid className="size-3.5" />}>Blocks</NavLink>
-          <NavLink href="/docs" icon={<BookOpen className="size-3.5" />}>Docs</NavLink>
+        <nav className="hidden items-center gap-1 lg:flex">
+          <NavLink href="/components">Components</NavLink>
+          <NavLink href="/blocks">Blocks</NavLink>
+          <NavLink href="/docs">Docs</NavLink>
         </nav>
 
         <div className="flex items-center gap-1.5">
@@ -102,9 +102,9 @@ export function Header() {
       {mobileOpen && (
         <div className="border-t border-border/50 bg-background/95 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col gap-1 p-4">
-            <MobileNavLink href="/components" icon={<Layers className="size-4" />} onClick={() => setMobileOpen(false)}>Components</MobileNavLink>
-            <MobileNavLink href="/blocks" icon={<LayoutGrid className="size-4" />} onClick={() => setMobileOpen(false)}>Blocks</MobileNavLink>
-            <MobileNavLink href="/docs" icon={<BookOpen className="size-4" />} onClick={() => setMobileOpen(false)}>Docs</MobileNavLink>
+            <MobileNavLink href="/components" onClick={() => setMobileOpen(false)}>Components</MobileNavLink>
+            <MobileNavLink href="/blocks" onClick={() => setMobileOpen(false)}>Blocks</MobileNavLink>
+            <MobileNavLink href="/docs" onClick={() => setMobileOpen(false)}>Docs</MobileNavLink>
           </div>
         </div>
       )}
@@ -112,30 +112,24 @@ export function Header() {
   )
 }
 
-function NavLink({ href, icon, children }: { href: string; icon: React.ReactNode; children: React.ReactNode }) {
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
       href={href}
-      className="group relative flex items-center gap-2 rounded-full border border-border/60 bg-muted/40 px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-border hover:bg-muted hover:text-foreground hover:shadow-sm"
+      className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
     >
-      <span className="flex items-center justify-center size-5 rounded-md bg-background/80 border border-border/50 text-muted-foreground transition-all duration-200 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground">
-        {icon}
-      </span>
       {children}
     </Link>
   )
 }
 
-function MobileNavLink({ href, icon, onClick, children }: { href: string; icon: React.ReactNode; onClick: () => void; children: React.ReactNode }) {
+function MobileNavLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
   return (
     <Link
       href={href}
       onClick={onClick}
-      className="flex items-center gap-3 rounded-xl border border-border/50 bg-card px-4 py-3.5 text-sm font-medium text-foreground transition-all hover:bg-muted hover:border-border"
+      className="rounded-lg border border-border/50 bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
     >
-      <span className="flex items-center justify-center size-8 rounded-lg bg-muted border border-border/50 text-muted-foreground">
-        {icon}
-      </span>
       {children}
     </Link>
   )

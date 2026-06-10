@@ -26,20 +26,20 @@ const projects = [
   {
     name: "Components",
     link: "/components",
-    gradient: "from-blue-500 to-blue-600",
     description: "Copy-paste UI primitives",
+    gradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #2784fd 100%)",
   },
   {
     name: "Blocks",
     link: "/blocks",
-    gradient: "from-violet-500 to-violet-600",
     description: "Ready-to-use sections",
+    gradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #7c3aed 100%)",
   },
   {
     name: "Docs",
     link: "/docs",
-    gradient: "from-amber-500 to-amber-600",
     description: "Guides and references",
+    gradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #f59e0b 100%)",
   },
 ];
 
@@ -205,31 +205,42 @@ export default function Home() {
               {/* GapPattern */}
               <div className="border-y border-border w-full h-6 bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
 
-              {/* Project Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
-                {projects.map((project) => (
-                  <Link
-                    key={project.name}
-                    href={project.link}
-                    className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-lg"
-                  >
-                    <div className="relative z-10 p-8 flex flex-col items-center justify-center min-h-[200px]">
-                      <div
-                        className={`mb-4 size-16 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
+              {/* Project Cards — uilayouts style */}
+              <div className="grid grid-cols-3 relative">
+                {projects.map((project, index) => (
+                  <div key={project.name}>
+                    <div
+                      className={`relative ${index < projects.length - 1 ? "pr-5 lg:pr-7 2xl:pr-10" : "pr-0"}`}
+                    >
+                      {index < projects.length - 1 && (
+                        <div className="absolute top-0 right-0 h-full w-5 lg:w-7 2xl:w-10 border-x border-border bg-background bg-[repeating-linear-gradient(135deg,var(--grid-color)_0px_1px,transparent_1px_10px)]" />
+                      )}
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col relative items-center overflow-hidden justify-center bg-black p-6 transition"
                       >
-                        <span className="text-white text-2xl font-bold">
-                          {project.name.charAt(0)}
-                        </span>
-                      </div>
-                      <div className="font-semibold text-lg text-foreground">
-                        {project.name}
-                      </div>
-                      <div className="text-sm text-muted-foreground mt-1">
-                        {project.description}
-                      </div>
+                        <svg className="absolute top-0 left-0 z-2 w-full h-full mix-blend-multiply opacity-50" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <filter id={`noise-${index}`}>
+                              <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" />
+                            </filter>
+                          </defs>
+                          <rect width="100%" height="100%" filter={`url(#noise-${index})`} />
+                        </svg>
+                        <div className="mb-4 flex h-60 relative z-10 items-center justify-center">
+                          <svg width="200" height="60" viewBox="0 0 200 60" className="fill-white opacity-90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" fontSize="48" fontWeight="bold" fontFamily="Inter, sans-serif">
+                              {project.name}
+                            </text>
+                          </svg>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 top-0 dark:bg-[linear-gradient(to_right,#2120202e_1px,transparent_1px),linear-gradient(to_bottom,#2120202e_1px,transparent_1px)] bg-[linear-gradient(to_right,#acacac2d_1px,transparent_1px),linear-gradient(to_bottom,#acacac2d_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+                        <div className="absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)]" style={{ background: project.gradient }} />
+                      </a>
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-                  </Link>
+                  </div>
                 ))}
               </div>
 
