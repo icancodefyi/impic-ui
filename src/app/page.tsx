@@ -6,13 +6,24 @@ import Image from "next/image";
 import { ArrowRight, Blocks, Component, Star, Search, ChevronDown } from "lucide-react";
 
 const reviews = [
-  { name: "SoraiaDev", handle: "@SoraiaDev", body: "king of design" },
+  {
+    name: "SoraiaDev",
+    handle: "@SoraiaDev",
+    body: "king of design",
+    avatar: "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png",
+  },
   {
     name: "Victor",
     handle: "@victor_bigfield",
     body: "love this minimalist style",
+    avatar: "https://preview.redd.it/snoovatar/avatars/6a99aeed-0694-4af7-b43f-434d0df2675e-headshot.png?width=64&height=64&crop=smart&auto=webp&s=9e3bf5845a647d44e61f679947871f5a03a43ec5",
   },
-  { name: "OrcDev", handle: "@orcdev", body: "let's go! new blood" },
+  {
+    name: "OrcDev",
+    handle: "@orcdev",
+    body: "let's go! new blood",
+    avatar: "https://preview.redd.it/snoovatar/avatars/6d0aab88-204d-4d48-a9b9-4bd79f35c2ac-headshot.png?width=64&height=64&crop=smart&auto=webp&s=3f31976a739e75f602bf6b2df305c8a167abd535",
+  },
   { name: "Kartik", handle: "@code_kartik", body: "this is really good man" },
   {
     name: "Daniele",
@@ -285,9 +296,17 @@ export default function Home() {
                         className="shrink-0 w-72 flex flex-col justify-center h-28 bg-card border border-border p-4 transition-all duration-300 hover:scale-105 mx-2 rounded-xl"
                       >
                         <div className="flex items-center mb-2">
-                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
-                            {review.name.charAt(0)}
-                          </div>
+                          {review.avatar ? (
+                            <img
+                              src={review.avatar}
+                              alt={review.name}
+                              className="w-8 h-8 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                              {review.name.charAt(0)}
+                            </div>
+                          )}
                           <div className="ml-2 flex-1">
                             <div className="flex items-center gap-1">
                               <span className="font-semibold text-xs">
