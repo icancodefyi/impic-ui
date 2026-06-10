@@ -3,34 +3,49 @@
 import Link from "next/link";
 import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
-import { ArrowRight, Blocks, Component, Star, Search, ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  Blocks,
+  Component,
+  Star,
+  Search,
+  ChevronDown,
+} from "lucide-react";
 
 const reviews = [
   {
     name: "SoraiaDev",
     handle: "@SoraiaDev",
     body: "king of design",
-    avatar: "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png",
+    avatar:
+      "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png",
   },
   {
     name: "Victor",
     handle: "@victor_bigfield",
     body: "love this minimalist style",
-    avatar: "https://preview.redd.it/snoovatar/avatars/6a99aeed-0694-4af7-b43f-434d0df2675e-headshot.png?width=64&height=64&crop=smart&auto=webp&s=9e3bf5845a647d44e61f679947871f5a03a43ec5",
+    avatar:
+      "https://preview.redd.it/snoovatar/avatars/6a99aeed-0694-4af7-b43f-434d0df2675e-headshot.png?width=64&height=64&crop=smart&auto=webp&s=9e3bf5845a647d44e61f679947871f5a03a43ec5",
   },
   {
     name: "OrcDev",
     handle: "@orcdev",
     body: "let's go! new blood",
-    avatar: "https://preview.redd.it/snoovatar/avatars/6d0aab88-204d-4d48-a9b9-4bd79f35c2ac-headshot.png?width=64&height=64&crop=smart&auto=webp&s=3f31976a739e75f602bf6b2df305c8a167abd535",
+        avatar:
+        "https://preview.redd.it/snoovatar/avatars/6d0aab88-204d-4d48-a9b9-4bd79f35c2ac-headshot.png?width=64&height=64&crop=smart&auto=webp&s=3f31976a739e75f602bf6b2df305c8a167abd535",
   },
-  { name: "Kartik", handle: "@code_kartik", body: "this is really good man" },
+  { name: "Kartik", handle: "@code_kartik", body: "this is really good man", avatar: "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png" },
   {
     name: "Daniele",
     handle: "@daniele_packard",
     body: "Looks very slick - congrats!",
+        avatar:
+      "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png",
   },
-  { name: "Sayan", handle: "@thesayannayak", body: "This is really good !!" },
+  { name: "Sayan", handle: "@thesayannayak", body: "This is really good !!" ,
+      avatar:
+      "https://preview.redd.it/snoovatar/avatars/6d0aab88-204d-4d48-a9b9-4bd79f35c2ac-headshot.png?width=64&height=64&crop=smart&auto=webp&s=3f31976a739e75f602bf6b2df305c8a167abd535",
+  },
 ];
 
 const projects = [
@@ -38,22 +53,28 @@ const projects = [
     name: "Components",
     link: "/components",
     description: "Copy-paste UI primitives",
-    darkGradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #2784fd 100%)",
-    lightGradient: "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #3d6aff 100%)",
+    darkGradient:
+      "linear-gradient(125% 125% at 50% 10%, #000000 40%, #2784fd 100%)",
+    lightGradient:
+      "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #3d6aff 100%)",
   },
   {
     name: "Blocks",
     link: "/blocks",
     description: "Ready-to-use sections",
-    darkGradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #7c3aed 100%)",
-    lightGradient: "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #8b5cf6 100%)",
+    darkGradient:
+      "linear-gradient(125% 125% at 50% 10%, #000000 40%, #7c3aed 100%)",
+    lightGradient:
+      "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #8b5cf6 100%)",
   },
   {
     name: "Docs",
     link: "/docs",
     description: "Guides and references",
-    darkGradient: "linear-gradient(125% 125% at 50% 10%, #000000 40%, #f59e0b 100%)",
-    lightGradient: "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #f59e0b 100%)",
+    darkGradient:
+      "linear-gradient(125% 125% at 50% 10%, #000000 40%, #f59e0b 100%)",
+    lightGradient:
+      "linear-gradient(125% 125% at 50% 10%, #ffffff 40%, #f59e0b 100%)",
   },
 ];
 
@@ -63,8 +84,12 @@ const componentPreviews = [
     category: "Interactive",
     preview: () => (
       <div className="flex items-center gap-2">
-        <button className="px-4 py-2 text-xs rounded-lg bg-primary text-primary-foreground font-medium shadow-sm">Get Started</button>
-        <button className="px-4 py-2 text-xs rounded-lg border border-border bg-background text-foreground font-medium">Learn More</button>
+        <button className="px-4 py-2 text-xs rounded-lg bg-primary text-primary-foreground font-medium shadow-sm">
+          Get Started
+        </button>
+        <button className="px-4 py-2 text-xs rounded-lg border border-border bg-background text-foreground font-medium">
+          Learn More
+        </button>
       </div>
     ),
   },
@@ -73,9 +98,15 @@ const componentPreviews = [
     category: "Data Display",
     preview: () => (
       <div className="flex items-center gap-2">
-        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">New</span>
-        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300">Active</span>
-        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full border border-border bg-background text-muted-foreground">Draft</span>
+        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">
+          New
+        </span>
+        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300">
+          Active
+        </span>
+        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full border border-border bg-background text-muted-foreground">
+          Draft
+        </span>
       </div>
     ),
   },
@@ -91,7 +122,9 @@ const componentPreviews = [
             placeholder="Search components..."
             className="text-xs bg-transparent outline-none w-full text-foreground placeholder:text-muted-foreground"
           />
-          <kbd className="shrink-0 text-[9px] px-1.5 py-0.5 rounded border border-border bg-muted text-muted-foreground font-mono">⌘K</kbd>
+          <kbd className="shrink-0 text-[9px] px-1.5 py-0.5 rounded border border-border bg-muted text-muted-foreground font-mono">
+            ⌘K
+          </kbd>
         </div>
       </div>
     ),
@@ -102,10 +135,16 @@ const componentPreviews = [
     preview: () => (
       <div className="w-full max-w-[200px] rounded-xl border border-border bg-card p-4 shadow-sm">
         <div className="flex items-center gap-3 mb-3">
-          <div className="size-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold shrink-0">B</div>
+          <div className="size-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
+            B
+          </div>
           <div className="min-w-0">
-            <div className="text-[11px] font-medium text-foreground truncate">Project Name</div>
-            <div className="text-[10px] text-muted-foreground truncate">Created 2 days ago</div>
+            <div className="text-[11px] font-medium text-foreground truncate">
+              Project Name
+            </div>
+            <div className="text-[10px] text-muted-foreground truncate">
+              Created 2 days ago
+            </div>
           </div>
         </div>
         <div className="h-1.5 rounded-full bg-muted overflow-hidden">
@@ -119,9 +158,15 @@ const componentPreviews = [
     category: "Navigation",
     preview: () => (
       <div className="flex gap-1 rounded-lg bg-muted p-1 w-fit">
-        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md bg-background text-foreground shadow-sm">Preview</button>
-        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground">Code</button>
-        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground">API</button>
+        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md bg-background text-foreground shadow-sm">
+          Preview
+        </button>
+        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground">
+          Code
+        </button>
+        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground">
+          API
+        </button>
       </div>
     ),
   },
@@ -136,10 +181,14 @@ const componentPreviews = [
             <div className="size-2 rounded-full bg-yellow-500/70" />
             <div className="size-2 rounded-full bg-green-500/70" />
           </div>
-          <span className="text-[10px] text-muted-foreground ml-1 font-mono">install.sh</span>
+          <span className="text-[10px] text-muted-foreground ml-1 font-mono">
+            install.sh
+          </span>
         </div>
         <div className="px-3 py-2.5 font-mono text-[11px] leading-relaxed">
-          <span className="text-foreground/60">$</span> <span className="text-foreground">npm install</span> <span className="text-blue-500">impic-ui</span>
+          <span className="text-foreground/60">$</span>{" "}
+          <span className="text-foreground">npm install</span>{" "}
+          <span className="text-blue-500">impic-ui</span>
         </div>
       </div>
     ),
@@ -150,11 +199,15 @@ const componentPreviews = [
     preview: () => (
       <div className="w-full max-w-[220px] divide-y divide-border rounded-lg border border-border shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-3 py-2.5">
-          <span className="text-[11px] font-medium text-foreground">Installation</span>
+          <span className="text-[11px] font-medium text-foreground">
+            Installation
+          </span>
           <ChevronDown className="size-3 text-muted-foreground" />
         </div>
         <div className="flex items-center justify-between px-3 py-2.5">
-          <span className="text-[11px] font-medium text-foreground">Components</span>
+          <span className="text-[11px] font-medium text-foreground">
+            Components
+          </span>
           <ChevronDown className="size-3 text-muted-foreground rotate-180" />
         </div>
       </div>
@@ -165,10 +218,18 @@ const componentPreviews = [
     category: "Data Display",
     preview: () => (
       <div className="flex items-center -space-x-2">
-        <div className="size-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">Z</div>
-        <div className="size-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">A</div>
-        <div className="size-8 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">R</div>
-        <div className="size-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">+3</div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">
+          Z
+        </div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">
+          A
+        </div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">
+          R
+        </div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">
+          +3
+        </div>
       </div>
     ),
   },
@@ -289,7 +350,7 @@ export default function Home() {
               {/* Reviews Marquee */}
               <div className="relative py-10 px-5">
                 <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden">
-                  <Marquee pauseOnHover className="[--duration:80s]">
+                  <Marquee pauseOnHover className="[--duration:20s]">
                     {reviews.map((review) => (
                       <div
                         key={review.name}
@@ -355,25 +416,105 @@ export default function Home() {
                         {/* Unique logo per card */}
                         <div className="flex h-44 relative z-10 items-center justify-center">
                           {index === 0 && (
-                            <svg width="90" height="90" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <rect x="5" y="5" width="50" height="50" rx="8" className="fill-foreground dark:fill-white" />
-                              <rect x="65" y="5" width="50" height="50" rx="8" className="fill-foreground/50 dark:fill-white/50" />
-                              <rect x="5" y="65" width="50" height="50" rx="8" className="fill-foreground/50 dark:fill-white/50" />
-                              <rect x="65" y="65" width="50" height="50" rx="8" className="fill-foreground/30 dark:fill-white/30" />
+                            <svg
+                              width="90"
+                              height="90"
+                              viewBox="0 0 120 120"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <rect
+                                x="5"
+                                y="5"
+                                width="50"
+                                height="50"
+                                rx="8"
+                                className="fill-foreground dark:fill-white"
+                              />
+                              <rect
+                                x="65"
+                                y="5"
+                                width="50"
+                                height="50"
+                                rx="8"
+                                className="fill-foreground/50 dark:fill-white/50"
+                              />
+                              <rect
+                                x="5"
+                                y="65"
+                                width="50"
+                                height="50"
+                                rx="8"
+                                className="fill-foreground/50 dark:fill-white/50"
+                              />
+                              <rect
+                                x="65"
+                                y="65"
+                                width="50"
+                                height="50"
+                                rx="8"
+                                className="fill-foreground/30 dark:fill-white/30"
+                              />
                             </svg>
                           )}
                           {index === 1 && (
-                            <svg width="110" height="80" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <rect x="10" y="5" width="120" height="26" rx="6" className="fill-foreground dark:fill-white" />
-                              <rect x="20" y="37" width="100" height="26" rx="6" className="fill-foreground/60 dark:fill-white/60" />
-                              <rect x="30" y="69" width="80" height="26" rx="6" className="fill-foreground/35 dark:fill-white/35" />
+                            <svg
+                              width="110"
+                              height="80"
+                              viewBox="0 0 140 100"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <rect
+                                x="10"
+                                y="5"
+                                width="120"
+                                height="26"
+                                rx="6"
+                                className="fill-foreground dark:fill-white"
+                              />
+                              <rect
+                                x="20"
+                                y="37"
+                                width="100"
+                                height="26"
+                                rx="6"
+                                className="fill-foreground/60 dark:fill-white/60"
+                              />
+                              <rect
+                                x="30"
+                                y="69"
+                                width="80"
+                                height="26"
+                                rx="6"
+                                className="fill-foreground/35 dark:fill-white/35"
+                              />
                             </svg>
                           )}
                           {index === 2 && (
-                            <svg width="90" height="75" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65C75 65 90 73 100 85V30C90 18 75 10 60 10Z" className="fill-foreground dark:fill-white" />
-                              <path d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65" className="fill-foreground/60 dark:fill-white/60" />
-                              <line x1="60" y1="10" x2="60" y2="65" className="stroke-foreground/20 dark:stroke-white/40" strokeWidth="2" />
+                            <svg
+                              width="90"
+                              height="75"
+                              viewBox="0 0 120 100"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65C75 65 90 73 100 85V30C90 18 75 10 60 10Z"
+                                className="fill-foreground dark:fill-white"
+                              />
+                              <path
+                                d="M60 10C45 10 30 18 20 30V85C30 73 45 65 60 65"
+                                className="fill-foreground/60 dark:fill-white/60"
+                              />
+                              <line
+                                x1="60"
+                                y1="10"
+                                x2="60"
+                                y2="65"
+                                className="stroke-foreground/20 dark:stroke-white/40"
+                                strokeWidth="2"
+                              />
                             </svg>
                           )}
                         </div>
