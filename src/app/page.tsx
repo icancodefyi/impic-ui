@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
-import { ArrowRight, Blocks, Component, Star, Search, ChevronDown, Terminal, Sparkles } from "lucide-react";
+import { ArrowRight, Blocks, Component, Star, Search, ChevronDown } from "lucide-react";
 
 const reviews = [
   { name: "SoraiaDev", handle: "@SoraiaDev", body: "king of design" },
@@ -48,53 +48,57 @@ const projects = [
 
 const componentPreviews = [
   {
-    name: "Buttons",
+    name: "Button",
     category: "Interactive",
     preview: () => (
-      <div className="flex flex-wrap gap-2 items-center justify-center">
-        <button className="px-3 py-1.5 text-xs rounded-lg bg-primary text-primary-foreground font-medium">Primary</button>
-        <button className="px-3 py-1.5 text-xs rounded-lg border border-border bg-background text-foreground font-medium">Secondary</button>
-        <button className="px-3 py-1.5 text-xs rounded-lg bg-foreground text-background font-medium">Dark</button>
+      <div className="flex items-center gap-2">
+        <button className="px-4 py-2 text-xs rounded-lg bg-primary text-primary-foreground font-medium shadow-sm">Get Started</button>
+        <button className="px-4 py-2 text-xs rounded-lg border border-border bg-background text-foreground font-medium">Learn More</button>
       </div>
     ),
   },
   {
-    name: "Badges",
+    name: "Badge",
     category: "Data Display",
     preview: () => (
-      <div className="flex flex-wrap gap-2 items-center justify-center">
-        <span className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">New</span>
-        <span className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">Active</span>
-        <span className="px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-muted text-muted-foreground">Draft</span>
+      <div className="flex items-center gap-2">
+        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">New</span>
+        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300">Active</span>
+        <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full border border-border bg-background text-muted-foreground">Draft</span>
       </div>
     ),
   },
   {
-    name: "Inputs",
+    name: "Input",
     category: "Form",
     preview: () => (
-      <div className="w-full space-y-2">
-        <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2">
-          <Search className="size-3.5 text-muted-foreground" />
+      <div className="w-full max-w-[220px]">
+        <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2.5 shadow-sm">
+          <Search className="size-3.5 text-muted-foreground shrink-0" />
           <input
             readOnly
-            placeholder="Search..."
+            placeholder="Search components..."
             className="text-xs bg-transparent outline-none w-full text-foreground placeholder:text-muted-foreground"
           />
-          <kbd className="hidden sm:inline-flex text-[10px] px-1.5 py-0.5 rounded border border-border bg-muted text-muted-foreground">⌘K</kbd>
+          <kbd className="shrink-0 text-[9px] px-1.5 py-0.5 rounded border border-border bg-muted text-muted-foreground font-mono">⌘K</kbd>
         </div>
       </div>
     ),
   },
   {
-    name: "Cards",
+    name: "Card",
     category: "Layout",
     preview: () => (
-      <div className="w-full max-w-[200px] rounded-xl border border-border bg-card p-3 space-y-2">
-        <div className="h-12 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-lg font-bold">A</div>
-        <div>
-          <div className="text-[11px] font-medium text-foreground">Card Title</div>
-          <div className="text-[10px] text-muted-foreground">Description</div>
+      <div className="w-full max-w-[200px] rounded-xl border border-border bg-card p-4 shadow-sm">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="size-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold shrink-0">B</div>
+          <div className="min-w-0">
+            <div className="text-[11px] font-medium text-foreground truncate">Project Name</div>
+            <div className="text-[10px] text-muted-foreground truncate">Created 2 days ago</div>
+          </div>
+        </div>
+        <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+          <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600" />
         </div>
       </div>
     ),
@@ -103,10 +107,10 @@ const componentPreviews = [
     name: "Tabs",
     category: "Navigation",
     preview: () => (
-      <div className="flex gap-0.5 rounded-lg bg-muted p-0.5">
-        <button className="px-3 py-1.5 text-[11px] font-medium rounded-md bg-background text-foreground shadow-sm">Preview</button>
-        <button className="px-3 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground hover:text-foreground">Code</button>
-        <button className="px-3 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground hover:text-foreground">Settings</button>
+      <div className="flex gap-1 rounded-lg bg-muted p-1 w-fit">
+        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md bg-background text-foreground shadow-sm">Preview</button>
+        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground">Code</button>
+        <button className="px-4 py-1.5 text-[11px] font-medium rounded-md text-muted-foreground">API</button>
       </div>
     ),
   },
@@ -114,12 +118,18 @@ const componentPreviews = [
     name: "Code Block",
     category: "Display",
     preview: () => (
-      <div className="w-full rounded-lg bg-foreground/5 dark:bg-white/5 border border-border p-3 font-mono text-[10px] leading-relaxed">
-        <div className="flex items-center gap-2 mb-2 pb-2 border-b border-border/50">
-          <Terminal className="size-3 text-muted-foreground" />
-          <span className="text-muted-foreground text-[10px]">install.sh</span>
+      <div className="w-full max-w-[240px] rounded-lg bg-foreground/[0.03] dark:bg-white/[0.03] border border-border overflow-hidden shadow-sm">
+        <div className="flex items-center gap-2 px-3 py-2 border-b border-border/50">
+          <div className="flex gap-1">
+            <div className="size-2 rounded-full bg-red-500/70" />
+            <div className="size-2 rounded-full bg-yellow-500/70" />
+            <div className="size-2 rounded-full bg-green-500/70" />
+          </div>
+          <span className="text-[10px] text-muted-foreground ml-1 font-mono">install.sh</span>
         </div>
-        <code className="text-foreground">npm install <span className="text-blue-500">impic-ui</span></code>
+        <div className="px-3 py-2.5 font-mono text-[11px] leading-relaxed">
+          <span className="text-foreground/60">$</span> <span className="text-foreground">npm install</span> <span className="text-blue-500">impic-ui</span>
+        </div>
       </div>
     ),
   },
@@ -127,11 +137,7 @@ const componentPreviews = [
     name: "Accordion",
     category: "Layout",
     preview: () => (
-      <div className="w-full divide-y divide-border rounded-lg border border-border">
-        <div className="flex items-center justify-between px-3 py-2.5">
-          <span className="text-[11px] font-medium text-foreground">Getting Started</span>
-          <ChevronDown className="size-3 text-muted-foreground" />
-        </div>
+      <div className="w-full max-w-[220px] divide-y divide-border rounded-lg border border-border shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-3 py-2.5">
           <span className="text-[11px] font-medium text-foreground">Installation</span>
           <ChevronDown className="size-3 text-muted-foreground" />
@@ -144,30 +150,14 @@ const componentPreviews = [
     ),
   },
   {
-    name: "Tooltips",
-    category: "Overlay",
+    name: "Avatar",
+    category: "Data Display",
     preview: () => (
-      <div className="flex items-center gap-4 justify-center">
-        <div className="relative group">
-          <div className="size-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">Z</div>
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-foreground text-background text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Profile
-          </div>
-        </div>
-        <div className="relative group">
-          <Sparkles className="size-5 text-muted-foreground" />
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-foreground text-background text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Premium
-          </div>
-        </div>
-        <div className="relative group">
-          <div className="size-5 rounded-full bg-muted flex items-center justify-center">
-            <span className="text-[10px] text-muted-foreground">?</span>
-          </div>
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-foreground text-background text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Help
-          </div>
-        </div>
+      <div className="flex items-center -space-x-2">
+        <div className="size-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">Z</div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">A</div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">R</div>
+        <div className="size-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-card">+3</div>
       </div>
     ),
   },
@@ -407,24 +397,22 @@ export default function Home() {
             <h2 className="xl:text-5xl md:text-4xl text-2xl font-medium tracking-tighter text-center mb-10">
               Ready-to-Use Components
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {componentPreviews.map((component) => (
                 <Link
                   key={component.name}
                   href="/components"
-                  className="group relative rounded-xl border border-border bg-card overflow-hidden transition-all hover:shadow-md hover:border-foreground/20"
+                  className="group relative rounded-xl border border-border bg-card overflow-hidden transition-all hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/20 hover:border-foreground/10"
                 >
-                  <div className="p-5 min-h-[160px] flex flex-col">
-                    <div className="flex-1 flex items-center justify-center mb-3">
-                      <component.preview />
+                  <div className="h-[160px] flex items-center justify-center p-6">
+                    <component.preview />
+                  </div>
+                  <div className="border-t border-border/50 px-4 py-3 bg-muted/30">
+                    <div className="text-sm font-medium text-foreground">
+                      {component.name}
                     </div>
-                    <div className="border-t border-border/50 pt-3">
-                      <div className="text-sm font-medium text-foreground">
-                        {component.name}
-                      </div>
-                      <div className="text-xs text-muted-foreground mt-0.5">
-                        {component.category}
-                      </div>
+                    <div className="text-[11px] text-muted-foreground mt-0.5">
+                      {component.category}
                     </div>
                   </div>
                 </Link>
